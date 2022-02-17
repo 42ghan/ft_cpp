@@ -12,8 +12,6 @@ NAME		=	megaphone
 
 SRCS		=	megaphone.cpp
 
-INCLDS		=
-
 OBJS		=	$(SRCS:%.cpp=%.o)
 
 ######################### Color #########################
@@ -42,4 +40,27 @@ RESTORE = "\033[u"
 .PHONY		:	all
 all			:	$(NAME)
 
-$(NAME)		:	$(CXX) $(CXXFLAGS) $(OBJS) -I .
+$(NAME)		:	$(OBJS)
+				$(CXX) $(CXXFLAGS) $(OBJS) -I. -o $@
+
+%.o			:	%.cpp
+				$(CXX) $(CXXFLAGS) -I. -c $< -o $@
+
+.PHONY		:	clean
+clean		:
+				rm -f $(OBJS)
+
+.PHONY		:	fclean
+fclean		:	clean
+				rm -f $(NAME)
+
+.PHONY		:	re
+re			:	fclean all
+
+.PHONY		:	debug
+debug		:
+				make DEBUG=1
+
+.PHONY		:	leaks
+leaks		:
+				make LEAKS=1
