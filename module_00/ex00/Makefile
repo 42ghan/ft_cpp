@@ -1,4 +1,4 @@
-CXX			=	clang++ -std=c++98
+CXX			=	c++ -std=c++98
 
 ifdef DEBUG
 	CXXFLAGS	=	-g3 -fsanitize=address
@@ -14,6 +14,8 @@ SRCS		=	megaphone.cpp
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 
+COMPILE_MSG = @echo $(BOLD)$(PURPLE) $(NAME) is compiled 📢 $(RESET)
+
 ######################### Color #########################
 
 GREEN="\033[32m"
@@ -23,10 +25,11 @@ RED="\033[31m"
 L_RED="\033[1;31m"
 BLUE="\033[34m"
 L_BLUE="\033[1;34m"
+PURPLE="\033[35m"
+L_PUPLE="\033[1;35m"
 MUTED="\033[130m"
 RESET="\033[0m"
 BOLD="\033[1m"
-L_PUPLE="\033[1;35m"
 UP = "\033[A"
 DOWN = "\033[B"
 RIGHT = "\033[C"
@@ -41,26 +44,34 @@ RESTORE = "\033[u"
 all			:	$(NAME)
 
 $(NAME)		:	$(OBJS)
-				$(CXX) $(CXXFLAGS) $(OBJS) -I. -o $@
+				@$(CXX) $(CXXFLAGS) $(OBJS) -I. -o $@
+				$(COMPILE_MSG)
 
 %.o			:	%.cpp
-				$(CXX) $(CXXFLAGS) -I. -c $< -o $@
+				@$(CXX) $(CXXFLAGS) -I. -c $< -o $@
+				@echo $(CUT)$(YELLOW) Compiling with $(CXXFLAGS)...$(RESET)
+				@echo $(CUT)$(YELLOW)'  ' [$(notdir $^)] to [$(notdir $@)] $(RESET)
 
 .PHONY		:	clean
 clean		:
-				rm -f $(OBJS)
+				@rm -f $(OBJS)
+				@echo $(L_RED) Remove OBJ files 👋 $(RESET)
 
 .PHONY		:	fclean
 fclean		:	clean
-				rm -f $(NAME)
+				@rm -f $(NAME)
+				@echo $(L_RED) Remove $(NAME) 🧹 $(RESET)
 
 .PHONY		:	re
 re			:	fclean all
 
 .PHONY		:	debug
 debug		:
-				make DEBUG=1
+				@make DEBUG=1
+				@echo $(CUT)$(L_BLUE)$(BOLD) It\'s DEBUG TIME 🤪$(RESET)
+
 
 .PHONY		:	leaks
 leaks		:
-				make LEAKS=1
+				@make LEAKS=1
+				@echo $(CUT)$(L_BLUE)$(BOLD) Is there Leaks? 🚰$(RESET)
