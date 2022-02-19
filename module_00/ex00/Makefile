@@ -1,11 +1,11 @@
-CXX			=	c++ -std=c++98
+CXX			=	c++
 
 ifdef DEBUG
-	CXXFLAGS	=	-g3 -fsanitize=address
+	CXXFLAGS	=	-std=c++98 -g3 -fsanitize=address
 else ifdef LEAKS
-	CXXFLAGS	=	-g	
+	CXXFLAGS	=	-std=c++98 -g	
 else
-	CXXFLAGS	=	-Wall -Werror -Wextra
+	CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra
 endif
 
 NAME		=	megaphone
