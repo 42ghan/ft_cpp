@@ -1,6 +1,6 @@
 /**
  * @file megaphone.cpp
- * @author ghan
+ * @author ghan (ghan@student.42seoul.kr)
  * @date 2022-02-19
  */
 
@@ -20,6 +20,6 @@ int main(int argc, char **argv) {
       std::cout << arg;
     }
   }
-  std::cout << std::endl;
+  std::cout << '\n';
   return (EXIT_SUCCESS);
 }
