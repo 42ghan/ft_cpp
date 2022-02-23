@@ -4,38 +4,27 @@
  * @date 2022-02-22
  */
 
-#include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-void AddContact(void) {
-  std::string fields[5];
-  std::string fields;
-
-  for (int i = 0; i < 5; i++) std::getline(std::cin, fields[i]);
-
-  Contact contact(fields[0], fields[1], fields[2], fields[3], fields[4]);
-  contact.PrintContact();
-}
+void Search(PhoneBook phone_book) { phone_book.DisplayContacts(); }
 
 int main(void) {
   std::string input;
+  PhoneBook phone_book;
 
   while (input != "EXIT") {
     if (input != "EXIT") {
-      std::cout << "write command > ";
+      std::cout << GREEN << BOLD << "write command > " << RESET;
       std::getline(std::cin, input);
     }
     if (input == "ADD")
-      AddContact();
-    else if (input == "SEARCH")
-      std::cout << "SEARCH\n";
-    else if (input != "EXIT")
-      std::cout << input << ": is not a valid command\n";
+      phone_book.AddContact();
+    else if (input == "SEARCH") {
+      phone_book.DisplayContacts();
+      phone_book.DisplayDetails();
+    }
   }
-  if (input == "EXIT") {
-    std::cout << "bye\n";
-    return (EXIT_SUCCESS);
-  }
+  if (input == "EXIT") return (EXIT_SUCCESS);
   std::cout << input;
   return (EXIT_SUCCESS);
 }
