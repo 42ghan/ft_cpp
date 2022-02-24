@@ -1,7 +1,7 @@
 /**
  * @file Account.cpp
  * @author ghan (ghan@student.42seoul.kr)
- * @brief
+ * @brief definitions & initializations of Account class members
  * @date 2022-02-24
  */
 
@@ -115,9 +115,9 @@ int Account::checkAmount(void) const { return this->_amount; }
 
 // READONLY!! display status of each account
 void Account::displayStatus(void) const {
-    _displayTimestamp();
-    std::cout << " index:" << this->_accountIndex
-              << ";amount:" << this->checkAmount()
-              << ";deposits:" << this->_nbDeposits
-              << ";withdrawals:" << this->_nbWithdrawals << '\n';
+  _displayTimestamp();
+  std::cout << " index:" << this->_accountIndex
+            << ";amount:" << this->checkAmount()
+            << ";deposits:" << this->_nbDeposits
+            << ";withdrawals:" << this->_nbWithdrawals << '\n';
 }
