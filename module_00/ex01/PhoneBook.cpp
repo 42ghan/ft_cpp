@@ -76,7 +76,10 @@ void PhoneBook::DisplayDetails(void) {
                 << L_BLUE << "==> " << RESET;
   }
 
-  const int idx = std::stoi(input, nullptr);
+  int idx;
+  std::stringstream ss;
+  ss.str(input);
+  ss >> idx;
   std::cout << BOLD << "Contact #" << input << RESET << '\n'
             << "  first name : " << this->contacts[idx].GetFirstName() << '\n'
             << "  last name : " << this->contacts[idx].GetLastName() << '\n'

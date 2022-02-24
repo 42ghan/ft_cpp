@@ -1,7 +1,7 @@
 /**
  * @file Account.cpp
  * @author ghan (ghan@student.42seoul.kr)
- * @brief definitions & initializations of Account class members
+ * @brief Definitions & initializations of Account class members
  * @date 2022-02-24
  */
 
@@ -107,7 +107,7 @@ bool Account::makeWithdrawal(int withdrawal) {
     std::cout << withdrawal << ";amount:" << this->_amount
               << ";nb_withdrawals:" << this->_nbWithdrawals << '\n';
   }
-  return (result);
+  return result;
 }
 
 // READONLY!! check current amount present in an account

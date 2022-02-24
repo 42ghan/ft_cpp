@@ -23,7 +23,7 @@ int main(void) {
       phone_book.DisplayDetails();
     }
   }
-  if (input == "EXIT") return (EXIT_SUCCESS);
+  if (input == "EXIT") return EXIT_SUCCESS;
   std::cout << input;
-  return (EXIT_SUCCESS);
+  return EXIT_SUCCESS;
 }
