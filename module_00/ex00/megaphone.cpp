@@ -1,6 +1,7 @@
 /**
  * @file megaphone.cpp
  * @author ghan (ghan@student.42seoul.kr)
+ * @brief A program that capitalize all small cases letters
  * @date 2022-02-19
  */
 

@@ -1,3 +1,10 @@
+/**
+ * @file Contact.hpp
+ * @author ghan (ghan@student.42seoul.kr)
+ * @brief Definitions of PhoneBook class member functions
+ * @date 2022-02-23
+ */
+
 #include "PhoneBook.hpp"
 
 // PhoneBook class constructor
@@ -8,9 +15,9 @@ PhoneBook::~PhoneBook(void) {}
 
 // add a contact to the phonebook's contact list
 void PhoneBook::AddContact(void) {
+  const std::string field_names[5] = {"first name", "last name", "nick name",
+                                      "phone number", "darkest secret"};
   std::string fields[5];
-  std::string field_names[5] = {"first name", "last name", "nick name",
-                                "phone number", "darkest secret"};
 
   std::cout << YELLOW << BOLD << "Fill information for a new contact\n"
             << RESET;

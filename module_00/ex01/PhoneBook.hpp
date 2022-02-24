@@ -1,3 +1,10 @@
+/**
+ * @file Contact.hpp
+ * @author ghan (ghan@student.42seoul.kr)
+ * @brief A header file for PhoneBook class
+ * @date 2022-02-23
+ */
+
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
@@ -5,6 +12,7 @@
 
 #include "Contact.hpp"
 
+/* ANSI CODES FOR TEXT DECORATION */
 #define GREEN "\033[32m"
 #define L_GREEN "\033[1;32m"
 #define YELLOW "\033[33m"

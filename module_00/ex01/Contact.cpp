@@ -1,15 +1,14 @@
+/**
+ * @file Contact.cpp
+ * @author ghan (ghan@student.42seoul.kr)
+ * @brief Definitions of Contact class member functions
+ * @date 2022-02-23
+ */
+
 #include "Contact.hpp"
 
 // Contact class default constructor
 Contact::Contact(void) {}
-
-// Contact class constructor with fields parameter
-// Contact::Contact(std::string fields[])
-//     : first_name_(fields[0]),
-//       last_name_(fields[1]),
-//       nickname_(fields[2]),
-//       phone_number_(fields[3]),
-//       darkest_secret_(fields[4]) {}
 
 // Contact class destructor
 Contact::~Contact(void) {}

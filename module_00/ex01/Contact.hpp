@@ -1,3 +1,10 @@
+/**
+ * @file Contact.hpp
+ * @author ghan (ghan@student.42seoul.kr)
+ * @brief A header file for Contact class
+ * @date 2022-02-23
+ */
+
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
@@ -15,19 +22,16 @@ class Contact {
  public:
   Contact(void);
   ~Contact(void);
-
   std::string GetFirstName(void);
   std::string GetLastName(void);
   std::string GetNickname(void);
   std::string GetPhoneNumber(void);
   std::string GetDarkestSecret(void);
-
   void SetFirstName(std::string);
   void SetLastName(std::string);
   void SetNickname(std::string);
   void SetPhoneNumber(std::string);
   void SetDarkestSecret(std::string);
-
   void FillContact(std::string[]);
 };
 

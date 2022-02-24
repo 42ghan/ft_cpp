@@ -1,12 +1,11 @@
 /**
  * @file main.cpp
  * @author ghan (ghan@student.42seoul.kr)
+ * @brief A phonebook program that can store upto 8 contacts
  * @date 2022-02-22
  */
 
 #include "PhoneBook.hpp"
-
-void Search(PhoneBook phone_book) { phone_book.DisplayContacts(); }
 
 int main(void) {
   std::string input;
