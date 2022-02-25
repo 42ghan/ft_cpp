@@ -8,10 +8,15 @@
 #include "Zombie.hpp"
 
 // Zombie class default constructor
-Zombie::Zombie(void){};
+Zombie::Zombie(void) {
+  std::cout << GREEN << "A new zombie is born!\n" << RESET;
+};
 
 // Zombie class constructor
-Zombie::Zombie(std::string name) { this->name_ = name; }
+Zombie::Zombie(std::string name) {
+  this->name_ = name;
+  std::cout << GREEN << '<' << this->name_ << "> is born !\n" << RESET;
+}
 
 // Zombie class destructor
 Zombie::~Zombie(void) {
