@@ -10,7 +10,11 @@
 Zombie *zombieHorde(int N, std::string name);
 
 int main(void) {
-  int n = 100;
+  const int n = 100;
+  if (n < 0) {
+    std::cout << "Error\nCannot create a negative number of zombies...\n";
+    return EXIT_SUCCESS;
+  }
   Zombie *horde = zombieHorde(n, "yongjule");
 
   for (int k = 0; k < n; k++) horde[k].announce();
