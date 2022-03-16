@@ -9,8 +9,8 @@
 #include <string>
 
 void ChangeReference(std::string &str_test) {
-  std::cout << "STRING ADDRESS (REF) : " << &str_test << '\n';
   str_test = "NEW STRING";
+  std::cout << "STRING ADDRESS (REF) : " << &str_test << '\n';
 }
 
 int main(void) {

@@ -5,6 +5,8 @@
  * @date 2022-02-26
  */
 
+#include <sys/stat.h>
+
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -13,9 +15,15 @@
 int ReadOriginal(std::string &original, const std::string &file_name) {
   std::ifstream file(file_name);
   std::stringstream buffer;
+  struct stat file_status;
 
   if (!file.is_open()) {
     std::cout << "Error : Failed to open a file\n";
+    return 0;
+  }
+  stat(file_name.c_str(), &file_status);
+  if (!S_ISREG(file_status.st_mode)) {
+    std::cout << "Error : The file is open, but is not a regular file\n";
     return 0;
   }
   buffer << file.rdbuf();

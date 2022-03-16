@@ -13,7 +13,7 @@ int main(void) {
   const int n = 100;
   if (n < 0) {
     std::cout << "Error\nCannot create a negative number of zombies...\n";
-    return EXIT_SUCCESS;
+    return EXIT_FAILURE;
   }
   Zombie *horde = zombieHorde(n, "yongjule");
 
