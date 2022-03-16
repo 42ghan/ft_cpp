@@ -38,15 +38,16 @@
 
 class PhoneBook {
  private:
-  int no_entries;
-  Contact contacts[8];
+  int no_entries_;
+  Contact contacts_[8];
+  void DisplayContacts(void) const;
+  void DisplayDetails(void) const;
 
  public:
   PhoneBook(void);
   ~PhoneBook(void);
   void AddContact(void);
-  void DisplayContacts(void);
-  void DisplayDetails();
+  void SearchPhoneBook(void) const;
 };
 
 #endif

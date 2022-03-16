@@ -8,7 +8,7 @@
 #include "PhoneBook.hpp"
 
 // PhoneBook class constructor
-PhoneBook::PhoneBook(void) { this->no_entries = 0; }
+PhoneBook::PhoneBook(void) : no_entries_(0) {}
 
 // PhoneBook class destructor
 PhoneBook::~PhoneBook(void) {}
@@ -24,25 +24,31 @@ void PhoneBook::AddContact(void) {
   for (int i = 0; i < 5; i++) {
     std::cout << "  " << field_names[i] << " : ";
     std::getline(std::cin, fields[i]);
+    if (std::cin.eof())
+      return;
+    else if (!fields[i].length()) {
+      std::cout << field_names[i] << " field cannot be empty\n";
+      return;
+    }
   }
 
-  if (this->no_entries == 7) this->no_entries = 0;
-  this->contacts[this->no_entries++].FillContact(fields);
+  int idx = 0;
+  if (this->no_entries_ != 8) idx = this->no_entries_++;
+  this->contacts_[idx].FillContact(fields);
 }
 
 // display contacts when SEARCH command is executed
-void PhoneBook::DisplayContacts(void) {
+void PhoneBook::DisplayContacts(void) const {
   std::cout << " ---------- ---------- ---------- ---------- \n"
             << '|' << std::setw(10) << "index"
             << "|" << std::setw(10) << "first name"
             << "|" << std::setw(10) << "last name"
             << "|" << std::setw(10) << "nickname"
             << "|\n";
-
-  for (int k = 0; k < 8; k++) {
-    std::string fields[3] = {this->contacts[k].GetFirstName(),
-                             this->contacts[k].GetLastName(),
-                             this->contacts[k].GetNickname()};
+  for (int k = 0; k < this->no_entries_; k++) {
+    std::string fields[3] = {this->contacts_[k].GetFirstName(),
+                             this->contacts_[k].GetLastName(),
+                             this->contacts_[k].GetNickname()};
     for (int l = 0; l < 3; l++) {
       if (fields[l].size() > 10) {
         fields[l].at(9) = '.';
@@ -58,18 +64,19 @@ void PhoneBook::DisplayContacts(void) {
 }
 
 // display detailed information about the given index
-void PhoneBook::DisplayDetails(void) {
+void PhoneBook::DisplayDetails(void) const {
   std::string input;
-  int flag = 0;
+  int input_flag = 0;
 
   std::cout << L_BLUE
             << "Write the index of the contact you want to check more detailed "
                "information of\n ==> "
             << RESET;
-  while (!flag) {
+  while (!input_flag) {
     std::getline(std::cin, input);
+    if (std::cin.eof()) return;
     if (input.size() == 1 && input[0] >= '0' && input[0] <= '7')
-      flag = 1;
+      input_flag = 1;
     else
       std::cout << L_RED << BOLD
                 << "WRONT INPUT! Please write a number between 0 and 7\n"
@@ -78,14 +85,30 @@ void PhoneBook::DisplayDetails(void) {
 
   int idx;
   std::stringstream ss;
+
   ss.str(input);
   ss >> idx;
-  std::cout << BOLD << "Contact #" << input << RESET << '\n'
-            << "  first name : " << this->contacts[idx].GetFirstName() << '\n'
-            << "  last name : " << this->contacts[idx].GetLastName() << '\n'
-            << "  nickname : " << this->contacts[idx].GetNickname() << '\n'
-            << "  phone number : " << this->contacts[idx].GetPhoneNumber()
-            << '\n'
-            << "  darkest secret : " << this->contacts[idx].GetDarkestSecret()
-            << '\n';
+  if (idx + 1 > this->no_entries_) {
+    std::cout << "  The requested contact is empty\n";
+  } else {
+    std::cout << BOLD << "Contact #" << input << RESET << '\n'
+              << "  first name : " << this->contacts_[idx].GetFirstName()
+              << '\n'
+              << "  last name : " << this->contacts_[idx].GetLastName() << '\n'
+              << "  nickname : " << this->contacts_[idx].GetNickname() << '\n'
+              << "  phone number : " << this->contacts_[idx].GetPhoneNumber()
+              << '\n'
+              << "  darkest secret : "
+              << this->contacts_[idx].GetDarkestSecret() << '\n';
+  }
+}
+
+// search phone book entries
+void PhoneBook::SearchPhoneBook(void) const {
+  if (!this->no_entries_) {
+    std::cout << "  Phone book is empty. Please add new contacts\n";
+    return;
+  }
+  this->DisplayContacts();
+  if (this->no_entries_) this->DisplayDetails();
 }
