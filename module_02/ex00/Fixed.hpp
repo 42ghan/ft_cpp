@@ -12,8 +12,8 @@
 
 class Fixed {
  private:
-  int fixed_pt_;
-  static const int fractional_bit_;
+  int value_;
+  static const int fractional_bits_ = 8;
 
  public:
   // canonical form
