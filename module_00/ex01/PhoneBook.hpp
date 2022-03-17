@@ -39,6 +39,7 @@
 class PhoneBook {
  private:
   int no_entries_;
+  int add_idx_;
   Contact contacts_[8];
   void DisplayContacts(void) const;
   void DisplayDetails(void) const;

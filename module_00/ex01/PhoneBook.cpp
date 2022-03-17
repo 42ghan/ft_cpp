@@ -8,7 +8,7 @@
 #include "PhoneBook.hpp"
 
 // PhoneBook class constructor
-PhoneBook::PhoneBook(void) : no_entries_(0) {}
+PhoneBook::PhoneBook(void) : no_entries_(0), add_idx_(0) {}
 
 // PhoneBook class destructor
 PhoneBook::~PhoneBook(void) {}
@@ -32,9 +32,9 @@ void PhoneBook::AddContact(void) {
     }
   }
 
-  int idx = 0;
-  if (this->no_entries_ != 8) idx = this->no_entries_++;
-  this->contacts_[idx].FillContact(fields);
+  this->contacts_[this->add_idx_++].FillContact(fields);
+  if (this->no_entries_ < 8) this->no_entries_++;
+  if (this->add_idx_ == 8) this->add_idx_ = 0;
 }
 
 // display contacts when SEARCH command is executed
