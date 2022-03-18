@@ -11,38 +11,57 @@
 Fixed::Fixed(void) : value_(0) { std::cout << "Default constructor called\n"; }
 
 // int constructor
-Fixed::Fixed(int value) {
+Fixed::Fixed(const int value) {
+  int new_value = value;
+
   std::cout << "Int constructor called\n";
-  value_ = value << 8;
+  for (int i = 0; i < fractional_bits_; i++) {
+    new_value *= 2;
+  }
+  setRawBits(new_value);
 }
 
 // float constructor
-Fixed::Fixed(float value) { std::cout << "Float constructor called\n"; }
+Fixed::Fixed(const float value) {
+  float new_value = value;
 
-// destructor
-Fixed::~Fixed(void) { std::cout << "Destructor called\n"; }
+  std::cout << "Float constructor called\n";
+  for (int i = 0; i < fractional_bits_; i++) {
+    new_value *= 2;
+  }
+  setRawBits((int)roundf(new_value));
+}
 
 // copy constructor
 Fixed::Fixed(const Fixed& original) {
   std::cout << "Copy constructor called\n";
-  value_ = original.getRawBits();
+  setRawBits(original.getRawBits());
 }
+
+// destructor
+Fixed::~Fixed(void) { std::cout << "Destructor called\n"; }
 
 // assignment operation
 Fixed& Fixed::operator=(const Fixed& rhs) {
   std::cout << "Assignment operator called\n";
-  value_ = rhs.getRawBits();
+  setRawBits(rhs.getRawBits());
   return *this;
 }
 
 // returns the raw value of the fixed point value
-int Fixed::getRawBits(void) const {
-  std::cout << "getRawBits member function called\n";
-  return value_;
-}
+int Fixed::getRawBits(void) const { return value_; }
 
 // sets the raw value of the fixed point value
-void Fixed::setRawBits(int const raw) {
-  std::cout << "setRawBits member function called\n";
-  value_ = raw;
+void Fixed::setRawBits(int const raw) { value_ = raw; }
+
+// converts the fixed point value to a floating point value
+float Fixed::toFloat(void) const { return (float)getRawBits() / 256; }
+
+// converts the fixed point value to an integer value
+int Fixed::toInt(void) const { return (int)roundf(toFloat()); }
+
+// insertion operation overload
+std::ostream& operator<<(std::ostream& out, const Fixed& rhs) {
+  out << rhs.toFloat();
+  return out;
 }

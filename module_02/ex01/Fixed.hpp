@@ -9,7 +9,6 @@
 #define FIXED_HPP
 
 #include <iostream>
-#include <string>
 
 class Fixed {
  private:
@@ -19,20 +18,20 @@ class Fixed {
  public:
   // canonical form
   Fixed(void);
-  ~Fixed(void);
-  Fixed(const Fixed&);
-  Fixed& operator=(const Fixed&);
-
   Fixed(const int);
   Fixed(const float);
+  Fixed(const Fixed&);
+  ~Fixed(void);
 
-  float toFloat(void) const;
-  int toInt(void) const;
-
-  std::string& operator<<(const Fixed&);
+  Fixed& operator=(const Fixed&);
 
   int getRawBits(void) const;
   void setRawBits(int const raw);
+
+  float toFloat(void) const;
+  int toInt(void) const;
 };
+
+std::ostream& operator<<(std::ostream&, const Fixed&);
 
 #endif
