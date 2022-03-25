@@ -59,3 +59,97 @@ std::ostream& operator<<(std::ostream& out, const Fixed& rhs) {
   out << rhs.toFloat();
   return out;
 }
+
+// less than operation overload
+bool Fixed::operator<(const Fixed& rhs) {
+  return getRawBits() < rhs.getRawBits();
+}
+
+// greater than operation overload
+bool Fixed::operator>(const Fixed& rhs) {
+  return getRawBits() > rhs.getRawBits();
+}
+
+// less than or equal operation overload
+bool Fixed::operator<=(const Fixed& rhs) {
+  return getRawBits() <= rhs.getRawBits();
+}
+
+// greater than or equal operation overload
+bool Fixed::operator>=(const Fixed& rhs) {
+  return getRawBits() >= rhs.getRawBits();
+}
+
+// equl to operation overload
+bool Fixed::operator==(const Fixed& rhs) {
+  return getRawBits() == rhs.getRawBits();
+}
+
+// not equl to operation overload
+bool Fixed::operator!=(const Fixed& rhs) {
+  return getRawBits() != rhs.getRawBits();
+}
+
+// addition operation overload
+Fixed Fixed::operator+(const Fixed& rhs) const {
+  Fixed ret;
+
+  ret.setRawBits(getRawBits() + rhs.getRawBits());
+  return ret;
+}
+
+// subtraction operation overload
+Fixed Fixed::operator-(const Fixed& rhs) const {
+  Fixed ret;
+
+  ret.setRawBits(getRawBits() - rhs.getRawBits());
+  return ret;
+}
+
+// multiplication operation overload
+Fixed Fixed::operator*(const Fixed& rhs) const {
+  Fixed ret;
+
+  ret.setRawBits(getRawBits() * rhs.getRawBits() / 256);
+  return ret;
+}
+
+// division operation overload
+Fixed Fixed::operator/(const Fixed& rhs) const {
+  Fixed ret;
+
+  ret.setRawBits(getRawBits() * 256 / rhs.getRawBits());
+  return ret;
+}
+
+// prefix increment operation overload
+Fixed& Fixed::operator++(void) {
+  int prev = getRawBits();
+
+  setRawBits(++prev);
+  return *this;
+}
+
+// postfix increment operation overload
+Fixed Fixed::operator++(int) {
+  Fixed old = *this;
+
+  operator++();
+  return old;
+}
+
+// prefix decrement operation overload
+Fixed& Fixed::operator--(void) {
+  int prev = getRawBits();
+
+  setRawBits(--prev);
+  return *this;
+}
+
+// postfix decrement operation overload
+Fixed Fixed::operator--(int) {
+  Fixed old = *this;
+
+  operator--();
+  return old;
+}
