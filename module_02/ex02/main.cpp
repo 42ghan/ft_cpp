@@ -5,8 +5,6 @@
  * @date 2022-03-03
  */
 
-#include <iostream>
-
 #include "Fixed.hpp"
 
 int main(void) {
