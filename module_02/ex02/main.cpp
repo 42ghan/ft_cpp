@@ -47,7 +47,8 @@ int main(void) {
 
   std::cout << "\n==MIN/MAX==\n";
   std::cout << b << std::endl;
-  // std::cout << Fixed::max(a, b) << std::endl;
+  std::cout << Fixed::max(a, b) << std::endl;
+  std::cout << Fixed::min(c, d) << std::endl;
 
   return 0;
 }

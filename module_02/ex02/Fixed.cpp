@@ -61,32 +61,32 @@ std::ostream& operator<<(std::ostream& out, const Fixed& rhs) {
 }
 
 // less than operation overload
-bool Fixed::operator<(const Fixed& rhs) {
+bool Fixed::operator<(const Fixed& rhs) const {
   return getRawBits() < rhs.getRawBits();
 }
 
 // greater than operation overload
-bool Fixed::operator>(const Fixed& rhs) {
+bool Fixed::operator>(const Fixed& rhs) const {
   return getRawBits() > rhs.getRawBits();
 }
 
 // less than or equal operation overload
-bool Fixed::operator<=(const Fixed& rhs) {
+bool Fixed::operator<=(const Fixed& rhs) const {
   return getRawBits() <= rhs.getRawBits();
 }
 
 // greater than or equal operation overload
-bool Fixed::operator>=(const Fixed& rhs) {
+bool Fixed::operator>=(const Fixed& rhs) const {
   return getRawBits() >= rhs.getRawBits();
 }
 
 // equl to operation overload
-bool Fixed::operator==(const Fixed& rhs) {
+bool Fixed::operator==(const Fixed& rhs) const {
   return getRawBits() == rhs.getRawBits();
 }
 
 // not equl to operation overload
-bool Fixed::operator!=(const Fixed& rhs) {
+bool Fixed::operator!=(const Fixed& rhs) const {
   return getRawBits() != rhs.getRawBits();
 }
 
@@ -152,4 +152,25 @@ Fixed Fixed::operator--(int) {
 
   operator--();
   return old;
+}
+
+// min or max
+Fixed& Fixed::min(Fixed& lhs, Fixed& rhs) {
+  if (lhs <= rhs) return lhs;
+  return rhs;
+}
+
+const Fixed& Fixed::min(const Fixed& lhs, const Fixed& rhs) {
+  if (lhs <= rhs) return lhs;
+  return rhs;
+}
+
+Fixed& Fixed::max(Fixed& lhs, Fixed& rhs) {
+  if (lhs >= rhs) return lhs;
+  return rhs;
+}
+
+const Fixed& Fixed::max(const Fixed& lhs, const Fixed& rhs) {
+  if (lhs >= rhs) return lhs;
+  return rhs;
 }
