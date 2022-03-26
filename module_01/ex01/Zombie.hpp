@@ -41,7 +41,7 @@ class Zombie {
   Zombie(void);
   Zombie(std::string);
   ~Zombie(void);
-  void announce(void) const;
+  void announce(void);
   void setName(std::string);
 };
 
