@@ -1,19 +1,19 @@
 /**
  * @file main.cpp
  * @author ghan (ghan@student.42seoul.kr)
- * @brief Karen logger
+ * @brief Harl logger
  * @date 2022-03-01
  */
 
-#include "Karen.hpp"
+#include "Harl.hpp"
 
 int main(void) {
-  Karen karen;
+  Harl Harl;
 
-  karen.complain("DEBUG");
-  karen.complain("INFO");
-  karen.complain("WARNING");
-  karen.complain("ERROR");
-  karen.complain("blah");
+  Harl.complain("DEBUG");
+  Harl.complain("INFO");
+  Harl.complain("WARNING");
+  Harl.complain("ERROR");
+  Harl.complain("blah");
   return EXIT_SUCCESS;
 }
