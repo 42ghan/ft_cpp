@@ -5,30 +5,34 @@
  * @date 2022-02-26
  */
 
-#include <sys/stat.h>
-
 #include <fstream>
 #include <iostream>
-#include <sstream>
 #include <string>
 
 int ReadOriginal(std::string &original, const std::string &file_name) {
   std::ifstream file(file_name);
-  std::stringstream buffer;
-  struct stat file_status;
 
   if (!file.is_open()) {
     std::cout << "Error : Failed to open a file\n";
     return 0;
   }
-  stat(file_name.c_str(), &file_status);
-  if (!S_ISREG(file_status.st_mode)) {
-    std::cout << "Error : The file is open, but is not a regular file\n";
+  file.seekg(0, file.end);
+  const int len = file.tellg();
+  if (len == -1) {
+    std::cout << "Error : tellg failed\n";
     return 0;
   }
-  buffer << file.rdbuf();
+  file.seekg(0, file.beg);
+  char data[len + 1];
+  data[len] = '\0';
+  file.read(data, len);
+  if (!file.good()) {
+    std::cout << "Error : The file is open, but is not a regular file\n";
+    file.close();
+    return 0;
+  }
+  original = data;
   file.close();
-  original = buffer.str();
   return 1;
 }
 
@@ -49,7 +53,7 @@ int WriteReplacedFile(const std::string &replaced,
   std::ofstream file(file_name + ".replace");
 
   if (!file.is_open()) {
-    std::cout << "Error : Failed to open a file\n";
+    std::cout << "Error : Failed to create a file\n";
     return 0;
   }
   file << replaced;
