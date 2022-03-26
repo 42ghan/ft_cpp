@@ -8,10 +8,10 @@ else
 	CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra
 endif
 
-NAME		=	karenFilter
+NAME		=	harlFilter
 
 SRCS		=	main.cpp\
-				Karen.cpp\
+				Harl.cpp\
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 

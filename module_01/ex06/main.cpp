@@ -5,7 +5,7 @@
  * @date 2022-03-01
  */
 
-#include "Karen.hpp"
+#include "Harl.hpp"
 
 int main(int argc, char **argv) {
   if (argc != 2) {
@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
     return EXIT_FAILURE;
   }
 
-  Karen karen;
+  Harl Harl;
 
-  karen.complain(argv[1]);
+  Harl.complain(argv[1]);
 }

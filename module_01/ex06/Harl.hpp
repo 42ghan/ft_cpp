@@ -1,12 +1,12 @@
 /**
- * @file Karen.hpp
+ * @file Harl.hpp
  * @author ghan (ghan@student.42seoul.kr)
- * @brief A header file for Karen class
+ * @brief A header file for Harl class
  * @date 2022-02-26
  */
 
-#ifndef KAREN_HPP
-#define KAREN_HPP
+#ifndef HARL_HPP
+#define HARL_HPP
 
 #include <iostream>
 #include <string>
@@ -39,7 +39,7 @@ enum Levels {
   kError,
 };
 
-class Karen {
+class Harl {
  private:
   void debug(void);
   void info(void);
@@ -47,8 +47,8 @@ class Karen {
   void error(void);
 
  public:
-  Karen(void);
-  ~Karen(void);
+  Harl(void);
+  ~Harl(void);
   void complain(std::string level);
 };
 
