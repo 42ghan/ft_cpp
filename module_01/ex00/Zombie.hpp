@@ -39,7 +39,7 @@ class Zombie {
  public:
   Zombie(std::string);
   ~Zombie(void);
-  void announce(void) const;
+  void announce(void);
 };
 
 #endif

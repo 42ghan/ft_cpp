@@ -10,16 +10,15 @@
 // Zombie class constructor
 Zombie::Zombie(std::string name) {
   this->name_ = name;
-  std::cout << GREEN << '<' << this->name_ << "> is born !\n" << RESET;
+  std::cout << GREEN << this->name_ << " is born !\n" << RESET;
 }
 
 // Zombie class destructor
 Zombie::~Zombie(void) {
-  std::cout << L_RED << '<' << this->name_ << "> is deaDDDDD...\n" << RESET;
+  std::cout << L_RED << this->name_ << " is deaDDDDD...\n" << RESET;
 }
 
 // announce BraiiiiiiinnnzzzZ...
-void Zombie::announce(void) const {
-  std::cout << L_BLUE << '<' << this->name_ << "> BraiiiiiiinnnzzzZ...\n"
-            << RESET;
+void Zombie::announce(void) {
+  std::cout << L_BLUE << this->name_ << ": BraiiiiiiinnnzzzZ...\n" << RESET;
 }
