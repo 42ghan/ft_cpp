@@ -31,14 +31,14 @@ Fixed::Fixed(const float value) {
 }
 
 // copy constructor
-Fixed::Fixed(const Fixed& original) { setRawBits(original.getRawBits()); }
+Fixed::Fixed(const Fixed& original) { *this = original; }
 
 // destructor
 Fixed::~Fixed(void) {}
 
 // assignment operation
 Fixed& Fixed::operator=(const Fixed& rhs) {
-  setRawBits(rhs.getRawBits());
+  value_ = rhs.getRawBits();
   return *this;
 }
 

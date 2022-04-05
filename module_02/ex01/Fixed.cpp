@@ -35,7 +35,7 @@ Fixed::Fixed(const float value) {
 // copy constructor
 Fixed::Fixed(const Fixed& original) {
   std::cout << "Copy constructor called\n";
-  setRawBits(original.getRawBits());
+  *this = original;
 }
 
 // destructor
@@ -43,8 +43,8 @@ Fixed::~Fixed(void) { std::cout << "Destructor called\n"; }
 
 // assignment operation
 Fixed& Fixed::operator=(const Fixed& rhs) {
-  std::cout << "Assignment operator called\n";
-  setRawBits(rhs.getRawBits());
+  std::cout << "Copy assignment operator called\n";
+  value_ = rhs.getRawBits();
   return *this;
 }
 

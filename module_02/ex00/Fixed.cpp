@@ -16,12 +16,12 @@ Fixed::~Fixed(void) { std::cout << "Destructor called\n"; }
 // copy constructor
 Fixed::Fixed(const Fixed& original) {
   std::cout << "Copy constructor called\n";
-  value_ = original.getRawBits();
+  *this = original;
 }
 
 // assignment operation
 Fixed& Fixed::operator=(const Fixed& rhs) {
-  std::cout << "Assignment operator called\n";
+  std::cout << "Copy assignment operator called\n";
   value_ = rhs.getRawBits();
   return *this;
 }
