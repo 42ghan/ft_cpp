@@ -13,8 +13,8 @@ Fixed crossProductZ(const Point& a, const Point& b) {
 
 bool isSameSide(const Point& a, const Point& b, const Point& c,
                 const Point& p) {
-  if (Fixed(crossProductZ(b - a, c - a)) * Fixed(crossProductZ(b - a, p - a)) >
-      Fixed()) 
+  if (crossProductZ(b - a, c - a) * crossProductZ(b - a, p - a) >
+      Fixed())
     return true;
   return false;
 }
