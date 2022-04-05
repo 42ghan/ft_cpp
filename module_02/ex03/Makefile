@@ -8,7 +8,7 @@ else
 	CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra
 endif
 
-NAME		=	 fixed
+NAME		=	 bsp
 
 SRCS		=	main.cpp\
 				Fixed.cpp\
