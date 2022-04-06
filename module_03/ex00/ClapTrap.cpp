@@ -10,11 +10,13 @@
 // default constructor
 ClapTrap::ClapTrap(void)
     : hit_points_(10), energy_points_(10), attack_damage_(0) {
-  std::cout << L_GREEN << "Default constructor\n" << RESET;
+  std::cout << L_GREEN << "Default constructor (ClapTrap)\n" << RESET;
 };
 
 // destructor
-ClapTrap::~ClapTrap(void) { std::cout << L_RED << "Destructor\n" << RESET; }
+ClapTrap::~ClapTrap(void) {
+  std::cout << L_RED << "Destructor (ClapTrap)\n" << RESET;
+}
 
 // constructor with a given name
 ClapTrap::ClapTrap(const std::string& name)
@@ -24,7 +26,11 @@ ClapTrap::ClapTrap(const std::string& name)
 }
 
 // copy constructor
-ClapTrap::ClapTrap(const ClapTrap& original) { *this = original; }
+ClapTrap::ClapTrap(const ClapTrap& original) {
+  std::cout << L_GREEN << "Copy constructor has been called (ClapTrap)\n"
+            << RESET;
+  *this = original;
+}
 
 // = operator overload
 ClapTrap& ClapTrap::operator=(const ClapTrap& rhs) {
