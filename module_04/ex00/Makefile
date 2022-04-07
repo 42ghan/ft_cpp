@@ -8,7 +8,7 @@ else
 	CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -pedantic-errors
 endif
 
-NAME		=	now_its_weird
+NAME		=	polymorphism
 
 SRCS		=	main.cpp\
 				Animal.cpp\
