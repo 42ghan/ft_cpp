@@ -20,7 +20,8 @@ Cat::~Cat(void) {
 }
 
 // copy constructor
-Cat::Cat(const Cat& original) {
+Cat::Cat(const Cat& original) : brain_(new Brain()) {
+  brain_->setIdeas(original.getBrain()->getIdeas());
   *this = original;
   std::cout << L_GREEN << "Copy constructor (Cat)\n" << RESET;
 }
@@ -33,3 +34,6 @@ Cat& Cat::operator=(const Cat& rhs) {
 
 // make sound override
 void Cat::makeSound(void) const { std::cout << "Meow Meow!\n"; }
+
+// getter
+Brain* Cat::getBrain(void) const { return brain_; }

@@ -20,7 +20,8 @@ Dog::~Dog(void) {
 }
 
 // copy constructor
-Dog::Dog(const Dog& original) {
+Dog::Dog(const Dog& original) : brain_(new Brain()) {
+  brain_->setIdeas(original.getBrain()->getIdeas());
   *this = original;
   std::cout << L_GREEN << "Copy constructor (Dog)\n" << RESET;
 }
@@ -33,3 +34,6 @@ Dog& Dog::operator=(const Dog& rhs) {
 
 // make sound override
 void Dog::makeSound(void) const { std::cout << "Woof Woof!\n"; }
+
+// getter
+Brain* Dog::getBrain(void) const { return brain_; }

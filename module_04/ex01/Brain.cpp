@@ -8,6 +8,7 @@
 #include "Brain.hpp"
 
 Brain::Brain(void) {
+  for (int i = 0; i < 100; i++) ideas_[i] = "🤩";
   std::cout << L_GREEN << "Default constructor (Brain)\n" << RESET;
 }
 
@@ -28,3 +29,7 @@ Brain& Brain::operator=(const Brain& rhs) {
 }
 
 const std::string* Brain::getIdeas(void) const { return ideas_; }
+
+void Brain::setIdeas(const std::string* new_ideas) {
+  for (int i = 0; i < 100; i++) ideas_[i] = new_ideas[i];
+}
