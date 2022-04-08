@@ -20,6 +20,7 @@ class Character : public ICharacter {
  private:
   std::string name_;
   AMateria* slot_[4];
+  int idx_;
 
  public:
   Character(void);
@@ -31,11 +32,12 @@ class Character : public ICharacter {
 
   const std::string& getName(void) const;
   const AMateria* getSlot(void) const;
+  int getIdx(void) const;
 
   void equip(AMateria*);
   void unequip(int);
 
-  void use(int, Character&);
+  void use(int, ICharacter&);
 };
 
 #endif

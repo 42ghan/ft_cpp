@@ -23,11 +23,14 @@ Ice::~Ice(void) {
 Ice::Ice(const Ice& original) { *this = original; }
 
 // = operator overload
-Ice& Ice::operator=(const Ice& rhs) { return *this; }
+Ice& Ice::operator=(const Ice& rhs) {
+  (void)rhs;
+  return *this;
+}
 
 // clone & use
 Ice* Ice::clone(void) const { return new Ice(); }
 
-void Ice::use(ICharacter& name) {
-  std::cout << "* shoots an ice bolt at " << name << '\n';
+void Ice::use(ICharacter& target) {
+  std::cout << "* shoots an ice bolt at " << target.getName() << '\n';
 }

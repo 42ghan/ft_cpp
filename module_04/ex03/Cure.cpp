@@ -9,6 +9,7 @@
 
 // default constructor
 Cure::Cure(void) {
+  setType("cure");
   std::cout << L_GREEN << "Default constructor (Cure)\n" << RESET;
 }
 
@@ -25,11 +26,14 @@ Cure::Cure(const Cure& original) {
 }
 
 // = operator overload
-Cure& Cure::operator=(const Cure& rhs) { return *this; }
+Cure& Cure::operator=(const Cure& rhs) {
+  (void)rhs;
+  return *this;
+}
 
 // clone & use
 Cure* Cure::clone(void) const { return new Cure(); }
 
-void Cure::user(ICharacter& name) {
-  std::cout << "* heals " << name << "'s wounds *\n";
+void Cure::use(ICharacter& target) {
+  std::cout << "* heals " << target.getName() << "'s wounds *\n";
 }

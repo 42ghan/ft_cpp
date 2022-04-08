@@ -8,7 +8,7 @@
 #include "Character.hpp"
 
 // default constructor
-Character::Character(void) {
+Character::Character(void) : idx_(0) {
   for (int i = 0; i < 4; i++) slot_[i] = NULL;
   std::cout << L_GREEN << "Default constructor (Character)\n" << RESET;
 }
@@ -20,7 +20,7 @@ Character::~Character(void) {
 }
 
 // constructor with given name
-Character::Character(const std::string& name) : name_(name) {
+Character::Character(const std::string& name) : name_(name), idx_(0) {
   for (int i = 0; i < 4; i++) slot_[i] = NULL;
   std::cout << L_GREEN << "Character " << name << " has been constructed\n"
             << RESET;
@@ -35,29 +35,30 @@ Character::Character(const Character& original) {
 // = operator overload
 Character& Character::operator=(const Character& rhs) {
   const AMateria* rhs_slot = rhs.getSlot();
-
+  idx_ = rhs.getIdx();
   name_ = rhs.getName();
+
   for (int i = 0; i < 4; i++) {
     delete slot_[i];
     slot_[i] = NULL;
-    if (rhs_slot + i != NULL)
-      slot_[i] = rhs_slot[i].getType() == "ice" ? new Ice(rhs_slot[i])
-                                                : new Cure(rhs_slot[i]);
+    if (rhs_slot + i != NULL) slot_[i] = rhs_slot[i].clone();
   }
+  return *this;
 }
 
 // getters
 const std::string& Character::getName(void) const { return name_; }
 
-const AMateria* Character::getSlot(void) const { return slot_; };
+const AMateria* Character::getSlot(void) const { return slot_[0]; }
+
+int Character::getIdx(void) const { return idx_; }
 
 // equip, unequip & use
 void Character::equip(AMateria* m) {
-  static int idx;
-  slot_[idx++] = m;
-  if (idx == 4) idx = 0;
+  slot_[idx_++] = m;
+  if (idx_ == 4) idx_ = 0;
 }
 
 void Character::unequip(int idx) { delete slot_[idx]; }
 
-void Character::use(int idx, Character& target) { slot_[idx]->use(target); }
+void Character::use(int idx, ICharacter& target) { slot_[idx]->use(target); }

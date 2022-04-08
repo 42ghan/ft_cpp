@@ -11,8 +11,9 @@
 #include <iostream>
 #include <string>
 
-#include "ICharacter.hpp"
 #include "color.hpp"
+
+class ICharacter;
 
 class AMateria {
  protected:
@@ -30,7 +31,7 @@ class AMateria {
   void setType(const std::string&);
 
   virtual AMateria* clone(void) const = 0;
-  virtual void use(ICharacter& target);
+  virtual void use(ICharacter& target) = 0;
 };
 
 #endif

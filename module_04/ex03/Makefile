@@ -11,6 +11,11 @@ endif
 NAME		=	abstract_class
 
 SRCS		=	main.cpp\
+				AMateria.cpp\
+				MateriaSource.cpp\
+				Character.cpp\
+				Ice.cpp\
+				Cure.cpp\
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 
