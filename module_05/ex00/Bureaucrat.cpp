@@ -9,7 +9,7 @@
 
 // default constructor
 Bureaucrat::Bureaucrat(void) : grade_(0) {
-  if (grade_ < 1) throw too_high_;
+  if (grade_ < 1) throw GradeTooHighException();
   std::cout << L_GREEN << "Default constructor (Bureaucrat)\n" << RESET;
 }
 
@@ -21,8 +21,8 @@ Bureaucrat::~Bureaucrat(void) {
 // constructor with a given name and grade
 Bureaucrat::Bureaucrat(const std::string& name, const unsigned int& grade)
     : name_(name), grade_(grade) {
-  if (grade < 1) throw too_high_;
-  if (grade > 150) throw too_low_;  
+  if (grade < 1) throw GradeTooHighException();
+  if (grade > 150) throw GradeTooLowException();
   std::cout << L_GREEN << name << " with grade, " << grade
             << " has been constructed\n"
             << RESET;
@@ -41,20 +41,20 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
 }
 
 // getters
-const std::string Bureaucrat::getName(void) const { return name_; }
+std::string Bureaucrat::getName(void) const { return name_; }
 
 unsigned int Bureaucrat::getGrade(void) const { return grade_; }
 
 // increment || decrement
 Bureaucrat& Bureaucrat::operator++(void) {
+  if (getGrade() <= 1) throw GradeTooHighException();
   grade_--;
-  if (getGrade() < 1) throw too_high_;
   return *this;
 }
 
 Bureaucrat& Bureaucrat::operator--(void) {
+  if (getGrade() >= 150) throw GradeTooLowException();
   grade_++;
-  if (getGrade() > 150) throw too_low_;
   return *this;
 }
 

@@ -12,8 +12,6 @@ NAME		=	bureaucrat
 
 SRCS		=	main.cpp\
 				Bureaucrat.cpp\
-				GradeTooHighException.cpp\
-				GradeTooLowException.cpp\
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 

@@ -8,11 +8,9 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
+#include <exception>
 #include <iostream>
 #include <string>
-
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 
 #include "color.hpp"
 
@@ -20,8 +18,18 @@ class Bureaucrat {
  private:
   const std::string name_;
   unsigned int grade_;
-  GradeTooHighException too_high_;
-  GradeTooLowException too_low_;
+
+  class GradeTooHighException : public std::exception {
+    virtual const char* what(void) const throw() {
+      return "This bureaucrat's grade is too high!\n";
+    }
+  };
+
+  class GradeTooLowException : public std::exception {
+    virtual const char* what(void) const throw() {
+      return "This bureaucrat's grade is too low!\n";
+    }
+  };
 
  public:
   Bureaucrat(void);
@@ -31,7 +39,7 @@ class Bureaucrat {
 
   Bureaucrat& operator=(const Bureaucrat&);
 
-  const std::string getName(void) const;
+  std::string getName(void) const;
   unsigned int getGrade(void) const;
 
   Bureaucrat& operator++(void);
