@@ -15,6 +15,7 @@ MateriaSource::MateriaSource(void) : idx_(0) {
 
 // destructor
 MateriaSource::~MateriaSource(void) {
+  for (int i = 0; i < 4; i++) delete sources_[i];
   std::cout << L_RED << "An instance of MateriaSource has been destoryed\n"
             << RESET;
 }
@@ -28,7 +29,6 @@ MateriaSource::MateriaSource(const MateriaSource& original) {
 // = operator overload
 MateriaSource& MateriaSource::operator=(const MateriaSource& rhs) {
   const AMateria* rhs_sources = rhs.getSources();
-  idx_ = rhs.getIdx();
 
   for (int i = 0; i < 4; i++) {
     delete sources_[i];
@@ -45,11 +45,14 @@ int MateriaSource::getIdx(void) const { return idx_; }
 
 // learn & create
 void MateriaSource::learnMateria(AMateria* m) {
-  if (idx_ >= 4) {
-    std::cout << "MateriaSources are full!\n";
-    return;
+  for (int i = 0; i < 4; i++) {
+    if (sources_[i] == NULL) {
+      sources_[i] = m;
+      return;
+    }
   }
-  sources_[idx_++] = m;
+  std::cout << "MateriaSource is full!\n";
+  delete m;
 }
 
 AMateria* MateriaSource::createMateria(const std::string& type) {
