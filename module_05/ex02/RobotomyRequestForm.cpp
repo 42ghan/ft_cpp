@@ -52,9 +52,12 @@ std::string RobotomyRequestForm::getTarget(void) const { return target_; }
 
 // execute overriding
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
+  struct timeval time;
+
   if (checkGrade(executor.getGrade())) {
+    gettimeofday(&time, NULL);
+    srand(time.tv_usec);
     std::cout << "Drrrrrrrrrrrrrrrrrr\n";
-    srand(time(NULL));
     if (rand() % 2)
       std::cout << target_ << " has been robotomized successfully!\n";
     else

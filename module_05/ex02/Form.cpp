@@ -72,6 +72,7 @@ void Form::beSigned(const Bureaucrat& a) {
 // check grade
 bool Form::checkGrade(const unsigned int grade) const {
   if (getExecGrade() < grade) throw GradeTooLowException();
+  if (!getIsSigned()) throw NotSignedException();
   return true;
 }
 

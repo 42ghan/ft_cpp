@@ -10,6 +10,9 @@ int main(void) {
     RobotomyRequestForm r_form("john");
     PresidentialPardonForm p_form("jake");
 
+    james.signForm(s_form);
+    james.signForm(r_form);
+    james.signForm(p_form);
     std::cout << "================ Shrubbery ================\n";
     james.executeForm(s_form);
     std::cout << "\n================ Robotomy ================\n";
@@ -21,16 +24,23 @@ int main(void) {
   }
 
   try {
-    Bureaucrat bob("bob", 150);
+    Bureaucrat bob("bob", 7);
+    ShrubberyCreationForm s_form("work");
+    RobotomyRequestForm r_form("brian");
+    PresidentialPardonForm p_form("bono");
 
+    bob.signForm(s_form);
+    bob.signForm(r_form);
+    bob.signForm(p_form);
     std::cout << "================ Shrubbery ================\n";
-    james.executeForm(s_form);
+    bob.executeForm(s_form);
     std::cout << "\n================ Robotomy ================\n";
-    james.executeForm(r_form);
+    bob.executeForm(r_form);
     std::cout << "\n================ PresidentialPardon ================\n";
-    james.executeForm(p_form);
+    bob.executeForm(p_form);
   } catch (std::exception& e) {
     std::cout << e.what();
   }
+
   return EXIT_SUCCESS;
 }

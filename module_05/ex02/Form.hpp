@@ -34,6 +34,12 @@ class Form {
     }
   };
 
+  class NotSignedException : public std::exception {
+    virtual const char* what(void) const throw() {
+      return "The form cannot be executed for it is not signed yet!\n";
+    }
+  };
+
   bool checkGrade(const unsigned int) const;
 
  public:
