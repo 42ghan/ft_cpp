@@ -11,6 +11,7 @@ endif
 NAME		=	conversion_of_scalar_types
 
 SRCS		=	main.cpp\
+				TypeConverter.cpp\
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 

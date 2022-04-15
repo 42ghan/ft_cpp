@@ -10,6 +10,7 @@
 
 #include <exception>
 #include <iostream>
+#include <limits>
 #include <sstream>
 #include <string>
 
@@ -18,15 +19,23 @@ enum Types { kChar, kInt, kFloat, kDouble, kNa };
 class TypeConverter {
  private:
   std::string param_;
+  size_t len_;
   int type_;
   char in_char_;
-  int in_int_;
+  long in_int_;
   float in_float_;
   double in_double_;
 
   size_t countOccurrence_(const std::string&);
-  int detectType_(const size_t);
-  void initActualType_(void);
+  int detectType_(void);
+  void convertChar_(void);
+  void convertInt_(void);
+  void convertFloat_(void);
+  void convertDouble_(void);
+  void printChar_(void);
+  void printInt_(void);
+  void printFloat_(void);
+  void printDouble_(void);
 
  public:
   TypeConverter(void);
