@@ -8,21 +8,21 @@
 #include "Point.hpp"
 
 // default constructor
-Point::Point(void) : x_(Fixed(0)), y_(Fixed(0)){};
+Point::Point(void) : x_(Fixed(0)), y_(Fixed(0)) {}
 
 // constructor (initialize x & y)
-Point::Point(float a, float b) : x_(Fixed(a)), y_(Fixed(b)) {}
+Point::Point(const float a, const float b) : x_(Fixed(a)), y_(Fixed(b)) {}
 
 // Copy constructor
 Point::Point(const Point& orig)
     : x_(Fixed(orig.getX())), y_(Fixed(orig.getY())) {}
 
 // destructor
-Point::~Point(void){};
+Point::~Point(void) {}
 
 // Copy assignment operator overload
 Point& Point::operator=(const Point& rhs) {
-  std::cout << rhs.getX() << std::endl;
+  (void)rhs;
   return *this;
 }
 
