@@ -8,7 +8,7 @@
 #include "ScavTrap.hpp"
 
 // default constructor
-ScavTrap::ScavTrap(void)  {
+ScavTrap::ScavTrap(void) {
   hit_points_ = 100;
   energy_points_ = 50;
   attack_damage_ = 20;
@@ -48,8 +48,8 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& rhs) {
 
 // guard gate
 void ScavTrap::guardGate(void) {
-  if (!hit_points_ || !energy_points_) { 
-    std::cout << "Not enough HP / EP to perform the request task...\n";
+  if (!hit_points_) {
+    std::cout << "Not enough HP to perform the request task...\n";
     return;
   }
   std::cout << "ScavTrap " << name_ << " is now in Gate keeper mode\n";
@@ -57,7 +57,7 @@ void ScavTrap::guardGate(void) {
 
 // Scav attack
 void ScavTrap::attack(const std::string& target) {
-  if (!hit_points_ || !energy_points_) { 
+  if (!hit_points_ || !energy_points_) {
     std::cout << "Not enough HP / EP to perform the request task...\n";
     return;
   }

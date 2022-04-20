@@ -48,8 +48,8 @@ FragTrap& FragTrap::operator=(const FragTrap& rhs) {
 
 // highfive guys
 void FragTrap::highFivesGuys(void) {
-  if (!hit_points_ || !energy_points_) { 
-    std::cout << "Not enough HP / EP to perform the request task...\n";
+  if (!hit_points_) {
+    std::cout << "Not enough HP to perform the request task...\n";
     return;
   }
   std::cout << "FragTrap " << name_ << " high five! 🙌\n";
