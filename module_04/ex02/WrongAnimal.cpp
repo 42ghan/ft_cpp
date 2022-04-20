@@ -26,14 +26,12 @@ WrongAnimal::WrongAnimal(const WrongAnimal& original) {
 
 // = operator overload
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& rhs) {
-  setType(rhs.type_);
+  type_ = rhs.type_;
   return *this;
 }
 
 // getter & setter
 std::string WrongAnimal::getType(void) const { return type_; }
-
-void WrongAnimal::setType(const std::string& new_type) { type_ = new_type; }
 
 // makeSound
 void WrongAnimal::makeSound(void) const { std::cout << "Lol Lol\n"; }

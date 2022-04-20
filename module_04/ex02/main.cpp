@@ -11,7 +11,7 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-int main(void) {
+void test(void) {
   const Animal* j = new Dog();
   const Animal* i = new Cat();
   // const Animal* meta = new Animal();
@@ -20,8 +20,14 @@ int main(void) {
   std::cout << i->getType() << " " << std::endl;
   i->makeSound();
   j->makeSound();
+
   delete j;
   delete i;
+}
+
+int main(void) {
+  test();
+  system("leaks abstract_class");
 
   return EXIT_SUCCESS;
 }

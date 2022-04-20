@@ -9,7 +9,7 @@
 
 // default constructor
 WrongCat::WrongCat(void) {
-  setType("WrongCat");
+  type_ = "WrongCat";
   std::cout << L_GREEN << "Default constructor (WrongCat)\n" << RESET;
 }
 
@@ -26,7 +26,7 @@ WrongCat::WrongCat(const WrongCat& original) {
 
 // = operator overload
 WrongCat& WrongCat::operator=(const WrongCat& rhs) {
-  setType(rhs.getType());
+  type_ = rhs.type_;
   return *this;
 }
 

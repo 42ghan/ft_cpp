@@ -9,7 +9,7 @@
 
 // default constructor
 Dog::Dog(void) : brain_(new Brain()) {
-  setType("Dog");
+  type_ = "Dog";
   std::cout << L_GREEN << "Default constructor (Dog)\n" << RESET;
 }
 
@@ -21,14 +21,14 @@ Dog::~Dog(void) {
 
 // copy constructor
 Dog::Dog(const Dog& original) : brain_(new Brain()) {
-  brain_->setIdeas(original.getBrain()->getIdeas());
   *this = original;
   std::cout << L_GREEN << "Copy constructor (Dog)\n" << RESET;
 }
 
 // = operator overload
 Dog& Dog::operator=(const Dog& rhs) {
-  setType(rhs.getType());
+  type_ = rhs.type_;
+  brain_->setIdeas(rhs.brain_->getIdeas());
   return *this;
 }
 

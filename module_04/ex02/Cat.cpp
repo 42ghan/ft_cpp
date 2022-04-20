@@ -9,7 +9,7 @@
 
 // default constructor
 Cat::Cat(void) : brain_(new Brain()) {
-  setType("Cat");
+  type_ = "Cat";
   std::cout << L_GREEN << "Default constructor (Cat)\n" << RESET;
 }
 
@@ -21,14 +21,14 @@ Cat::~Cat(void) {
 
 // copy constructor
 Cat::Cat(const Cat& original) : brain_(new Brain()) {
-  brain_->setIdeas(original.getBrain()->getIdeas());
   *this = original;
   std::cout << L_GREEN << "Copy constructor (Cat)\n" << RESET;
 }
 
 // = operator overload
 Cat& Cat::operator=(const Cat& rhs) {
-  setType(rhs.getType());
+  type_ = rhs.type_;
+  brain_->setIdeas(rhs.brain_->getIdeas());
   return *this;
 }
 
