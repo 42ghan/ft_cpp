@@ -13,7 +13,7 @@ ScavTrap::ScavTrap(void) {
   setEnergyPoints(50);
   setAttackDamage(20);
   std::cout << L_GREEN << "Default constructor (ScavTrap)\n" << RESET;
-};
+}
 
 // destructor
 ScavTrap::~ScavTrap(void) {
@@ -26,7 +26,7 @@ ScavTrap::ScavTrap(const std::string& name) {
   setHitPoints(100);
   setEnergyPoints(50);
   setAttackDamage(20);
-  std::cout << L_GREEN << "ScavTrap <" << name << "> has been constructed\n"
+  std::cout << L_GREEN << "ScavTrap " << name << " has been constructed\n"
             << RESET;
 }
 
@@ -47,11 +47,11 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& rhs) {
 }
 
 void ScavTrap::guardGate(void) {
-  std::cout << "ScavTrap <" << getName() << "> is now in Gate keeper mode\n";
+  std::cout << "ScavTrap " << getName() << " is now in Gate keeper mode\n";
 }
 
 void ScavTrap::attack(const std::string& target) {
   energy_points_--;
-  std::cout << "ScavTrap <" << getName() << "> attacks <" << target
-            << ">, causing <" << getAttackDamage() << "> points of damage!\n";
+  std::cout << "ScavTrap " << getName() << " attacks " << target << ", causing "
+            << getAttackDamage() << " points of damage!\n";
 }

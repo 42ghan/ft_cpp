@@ -13,7 +13,7 @@ FragTrap::FragTrap(void) {
   setEnergyPoints(100);
   setAttackDamage(30);
   std::cout << L_GREEN << "Default constructor (FragTrap)\n" << RESET;
-};
+}
 
 // destructor
 FragTrap::~FragTrap(void) {
@@ -26,7 +26,7 @@ FragTrap::FragTrap(const std::string& name) {
   setHitPoints(100);
   setEnergyPoints(100);
   setAttackDamage(30);
-  std::cout << L_GREEN << "FragTrap <" << name << "> has been constructed\n"
+  std::cout << L_GREEN << "FragTrap " << name << " has been constructed\n"
             << RESET;
 }
 
@@ -48,5 +48,5 @@ FragTrap& FragTrap::operator=(const FragTrap& rhs) {
 
 // highfive guys
 void FragTrap::highFivesGuys(void) {
-  std::cout << "FragTrap <" << getName() << "> high five! 🙌\n";
+  std::cout << "FragTrap " << getName() << " high five! 🙌\n";
 }

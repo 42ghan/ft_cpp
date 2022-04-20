@@ -13,7 +13,7 @@ DiamondTrap::DiamondTrap(void) {
   setEnergyPoints(50);
   setAttackDamage(30);
   std::cout << L_GREEN << "Default constructor (DiamondTrap)\n" << RESET;
-};
+}
 
 // destructor
 DiamondTrap::~DiamondTrap(void) {
@@ -27,7 +27,7 @@ DiamondTrap::DiamondTrap(const std::string& name) {
   setHitPoints(100);
   setEnergyPoints(50);
   setAttackDamage(30);
-  std::cout << L_GREEN << "DiamondTrap <" << name << "> has been constructed\n"
+  std::cout << L_GREEN << "DiamondTrap " << name << " has been constructed\n"
             << RESET;
 }
 
@@ -49,6 +49,6 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& rhs) {
 
 // who am I
 void DiamondTrap::whoAmI(void) {
-  std::cout << "My Diamond name is <" << name_ << "> and my Clap name is <"
-            << getName() << ">\n";
+  std::cout << "My Diamond name is " << name_ << " and my Clap name is "
+            << getName() << "\n";
 }
