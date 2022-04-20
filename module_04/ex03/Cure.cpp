@@ -9,7 +9,7 @@
 
 // default constructor
 Cure::Cure(void) {
-  setType("cure");
+  type_ = "cure";
   std::cout << L_GREEN << "Default constructor (Cure)\n" << RESET;
 }
 

@@ -30,7 +30,6 @@ class Character : public ICharacter {
   Character& operator=(const Character&);
 
   const std::string& getName(void) const;
-  const AMateria* getSlot(void) const;
 
   void equip(AMateria*);
   void unequip(int);

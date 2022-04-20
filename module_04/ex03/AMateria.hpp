@@ -22,16 +22,15 @@ class AMateria {
  public:
   AMateria(void);
   AMateria(const std::string&);
-  virtual ~AMateria(void) = 0;
+  virtual ~AMateria(void);
   AMateria(const AMateria&);
 
   AMateria& operator=(const AMateria&);
 
   const std::string& getType(void) const;
-  void setType(const std::string&);
 
   virtual AMateria* clone(void) const = 0;
-  virtual void use(ICharacter& target) = 0;
+  virtual void use(ICharacter& target);
 };
 
 #endif

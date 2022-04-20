@@ -38,4 +38,5 @@ AMateria& AMateria::operator=(const AMateria& rhs) {
 // getter & setter
 const std::string& AMateria::getType(void) const { return type_; }
 
-void AMateria::setType(const std::string& new_type) { type_ = new_type; }
+// virtual use
+void AMateria::use(ICharacter& target) { (void)target; }

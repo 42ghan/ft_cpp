@@ -8,7 +8,7 @@
 #include "MateriaSource.hpp"
 
 // default constructor
-MateriaSource::MateriaSource(void) : idx_(0) {
+MateriaSource::MateriaSource(void) {
   for (int i = 0; i < 4; i++) sources_[i] = NULL;
   std::cout << L_GREEN << "Default constructor (MateriaSource)\n" << RESET;
 }
@@ -28,20 +28,13 @@ MateriaSource::MateriaSource(const MateriaSource& original) {
 
 // = operator overload
 MateriaSource& MateriaSource::operator=(const MateriaSource& rhs) {
-  const AMateria* rhs_sources = rhs.getSources();
-
   for (int i = 0; i < 4; i++) {
     delete sources_[i];
     sources_[i] = NULL;
-    if (rhs_sources + i != NULL) sources_[i] = rhs_sources[i].clone();
+    if (rhs.sources_ + i != NULL) sources_[i] = rhs.sources_[i]->clone();
   }
   return *this;
 }
-
-// getters
-const AMateria* MateriaSource::getSources(void) const { return sources_[0]; }
-
-int MateriaSource::getIdx(void) const { return idx_; }
 
 // learn & create
 void MateriaSource::learnMateria(AMateria* m) {

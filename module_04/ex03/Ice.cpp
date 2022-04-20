@@ -1,6 +1,6 @@
 /**
  * @file Ice.cpp
- * @author your name (you@domain.com)
+ * @author ghan (ghan@student.42seoul.kr)
  * @brief
  * @date 2022-04-08
  */
@@ -9,7 +9,7 @@
 
 // default constructor
 Ice::Ice(void) {
-  setType("ice");
+  type_ = "ice";
   std::cout << L_GREEN << "Default constructor (Ice)\n" << RESET;
 }
 

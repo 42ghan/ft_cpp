@@ -10,12 +10,14 @@
 
 void leak_check(void) {
   IMateriaSource* src = new MateriaSource();
+  AMateria* tmp;
   src->learnMateria(new Ice());
+  tmp = src->createMateria("cure");
+  if (!tmp) std::cout << "Haven't learned cure yet\n";
   src->learnMateria(new Cure());
 
   ICharacter* me = new Character("me");
 
-  AMateria* tmp;
   tmp = src->createMateria("ice");
   me->equip(tmp);
   tmp = src->createMateria("cure");
@@ -58,6 +60,6 @@ void leak_check(void) {
 
 int main() {
   leak_check();
-  // system("leaks interface_and_recap");
+  system("leaks interface_and_recap");
   return 0;
 }

@@ -35,21 +35,18 @@ Character::Character(const Character& original) {
 
 // = operator overload
 Character& Character::operator=(const Character& rhs) {
-  const AMateria* rhs_slot = rhs.getSlot();
-  name_ = rhs.getName();
+  name_ = rhs.name_;
 
   for (int i = 0; i < 4; i++) {
     delete slot_[i];
     slot_[i] = NULL;
-    if (rhs_slot + i != NULL) slot_[i] = rhs_slot[i].clone();
+    if (rhs.slot_ + i != NULL) slot_[i] = rhs.slot_[i]->clone();
   }
   return *this;
 }
 
 // getters
 const std::string& Character::getName(void) const { return name_; }
-
-const AMateria* Character::getSlot(void) const { return slot_[0]; }
 
 // equip, unequip & use
 void Character::equip(AMateria* m) {
@@ -59,7 +56,7 @@ void Character::equip(AMateria* m) {
       return;
     }
   }
-  std::cout << getName() << "'s slot is full!\n";
+  std::cout << name_ << "'s slot is full!\n";
   delete m;
 }
 

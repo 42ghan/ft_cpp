@@ -13,7 +13,6 @@
 class MateriaSource : public IMateriaSource {
  private:
   AMateria *sources_[4];
-  int idx_;
 
  public:
   MateriaSource(void);
@@ -21,9 +20,6 @@ class MateriaSource : public IMateriaSource {
   MateriaSource(const MateriaSource &);
 
   MateriaSource &operator=(const MateriaSource &);
-
-  const AMateria *getSources(void) const;
-  int getIdx(void) const;
 
   void learnMateria(AMateria *);
   AMateria *createMateria(const std::string &);
