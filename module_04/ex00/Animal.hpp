@@ -23,8 +23,7 @@ class Animal {
   Animal(const Animal&);
 
   Animal& operator=(const Animal&);
-  std::string getType() const;
-  void setType(const std::string&);
+  std::string getType(void) const;
 
   virtual void makeSound(void) const;
 };

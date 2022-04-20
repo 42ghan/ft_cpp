@@ -9,7 +9,7 @@
 
 // default constructor
 Cat::Cat(void) {
-  setType("Cat");
+  type_ = "Cat";
   std::cout << L_GREEN << "Default constructor (Cat)\n" << RESET;
 }
 
@@ -26,7 +26,7 @@ Cat::Cat(const Cat& original) {
 
 // = operator overload
 Cat& Cat::operator=(const Cat& rhs) {
-  setType(rhs.getType());
+  type_ = rhs.type_;
   return *this;
 }
 

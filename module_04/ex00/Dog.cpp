@@ -9,7 +9,7 @@
 
 // default constructor
 Dog::Dog(void) {
-  setType("Dog");
+  type_ = "Dog";
   std::cout << L_GREEN << "Default constructor (Dog)\n" << RESET;
 }
 
@@ -26,7 +26,7 @@ Dog::Dog(const Dog& original) {
 
 // = operator overload
 Dog& Dog::operator=(const Dog& rhs) {
-  setType(rhs.getType());
+  type_ = rhs.type_;
   return *this;
 }
 

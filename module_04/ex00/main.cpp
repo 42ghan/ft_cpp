@@ -11,7 +11,7 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-int main() {
+void subject(void) {
   const Animal* meta = new Animal();
   const Animal* j = new Dog();
   const Animal* i = new Cat();
@@ -35,6 +35,11 @@ int main() {
   wrong_meta->makeSound();
   delete k;
   delete wrong_meta;
+}
+
+int main() {
+  subject();
+  system("leaks polymorphism");
 
   return EXIT_SUCCESS;
 }
