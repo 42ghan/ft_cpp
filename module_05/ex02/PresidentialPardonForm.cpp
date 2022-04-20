@@ -1,6 +1,6 @@
 /**
  * @file PresidentialPardonForm.cpp
- * @author your name (you@domain.com)
+ * @author ghan (ghan@student.42seoul.kr)
  * @brief Definitions of member functions of PresidentialPardonForm class
  * @date 2022-04-13
  */

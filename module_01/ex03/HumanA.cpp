@@ -1,6 +1,6 @@
 /**
  * @file HumanA.cpp
- * @author your name (you@domain.com)
+ * @author ghan (ghan@student.42seoul.kr)
  * @brief Definitions of HumanA class members
  * @date 2022-02-26
  */
