@@ -25,14 +25,12 @@ Animal::Animal(const Animal& original) {
 
 // = operator overload
 Animal& Animal::operator=(const Animal& rhs) {
-  setType(rhs.type_);
+  type_ = rhs.type_;
   return *this;
 }
 
-// getter & setter
+// getter
 std::string Animal::getType(void) const { return type_; }
-
-void Animal::setType(const std::string& new_type) { type_ = new_type; }
 
 // makeSound
 void Animal::makeSound(void) const { std::cout << "Blah Blah\n"; }
