@@ -9,9 +9,9 @@
 
 // default constructor
 FragTrap::FragTrap(void) {
-  setHitPoints(100);
-  setEnergyPoints(100);
-  setAttackDamage(30);
+  hit_points_ = 100;
+  energy_points_ = 100;
+  attack_damage_ = 30;
   std::cout << L_GREEN << "Default constructor (FragTrap)\n" << RESET;
 }
 
@@ -22,10 +22,10 @@ FragTrap::~FragTrap(void) {
 
 // constructor with a given name
 FragTrap::FragTrap(const std::string& name) {
-  setName(name);
-  setHitPoints(100);
-  setEnergyPoints(100);
-  setAttackDamage(30);
+  name_ = name;
+  hit_points_ = 100;
+  energy_points_ = 100;
+  attack_damage_ = 30;
   std::cout << L_GREEN << "FragTrap " << name << " has been constructed\n"
             << RESET;
 }
@@ -39,14 +39,18 @@ FragTrap::FragTrap(const FragTrap& original) {
 
 // = operator overload
 FragTrap& FragTrap::operator=(const FragTrap& rhs) {
-  setName(rhs.getName());
-  setHitPoints(rhs.getHitPoints());
-  setEnergyPoints(rhs.getEnergyPoints());
-  setAttackDamage(rhs.getAttackDamage());
+  name_ = rhs.name_;
+  hit_points_ = rhs.hit_points_;
+  energy_points_ = rhs.energy_points_;
+  attack_damage_ = rhs.attack_damage_;
   return *this;
 }
 
 // highfive guys
 void FragTrap::highFivesGuys(void) {
-  std::cout << "FragTrap " << getName() << " high five! 🙌\n";
+  if (!hit_points_ || !energy_points_) { 
+    std::cout << "Not enough HP / EP to perform the request task...\n";
+    return;
+  }
+  std::cout << "FragTrap " << name_ << " high five! 🙌\n";
 }

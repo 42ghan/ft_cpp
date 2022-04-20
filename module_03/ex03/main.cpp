@@ -17,5 +17,9 @@ int main(void) {
   dt.guardGate();
   dt.highFivesGuys();
   dt.whoAmI();
+
+  dt.takeDamage(200);
+  dt.whoAmI();
+  
   return EXIT_SUCCESS;
 }

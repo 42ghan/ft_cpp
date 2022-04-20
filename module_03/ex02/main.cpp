@@ -15,5 +15,13 @@ int main(void) {
   ft.beRepaired(5);
   ft.printStatus();
   ft.highFivesGuys();
+
+  FragTrap ft2(ft);
+  ft2.takeDamage(110);
+  ft.printStatus();
+  ft2.printStatus();
+  ft2.highFivesGuys();
+  
+
   return EXIT_SUCCESS;
 }

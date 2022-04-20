@@ -9,9 +9,9 @@
 
 // default constructor
 DiamondTrap::DiamondTrap(void) {
-  setHitPoints(100);
-  setEnergyPoints(50);
-  setAttackDamage(30);
+  hit_points_ = 100;
+  energy_points_ = 50;
+  attack_damage_ = 30;
   std::cout << L_GREEN << "Default constructor (DiamondTrap)\n" << RESET;
 }
 
@@ -22,11 +22,11 @@ DiamondTrap::~DiamondTrap(void) {
 
 // constructor with a given name
 DiamondTrap::DiamondTrap(const std::string& name) {
+  ClapTrap::name_ = name + "_clap_name";
   name_ = name;
-  setName(name + "_clap_name");
-  setHitPoints(100);
-  setEnergyPoints(50);
-  setAttackDamage(30);
+  hit_points_ = 100;
+  energy_points_ = 50;
+  attack_damage_ = 30;
   std::cout << L_GREEN << "DiamondTrap " << name << " has been constructed\n"
             << RESET;
 }
@@ -40,15 +40,19 @@ DiamondTrap::DiamondTrap(const DiamondTrap& original) {
 
 // = operator overload
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& rhs) {
-  setName(rhs.getName());
-  setHitPoints(rhs.getHitPoints());
-  setEnergyPoints(rhs.getEnergyPoints());
-  setAttackDamage(rhs.getAttackDamage());
+  name_ = rhs.name_;
+  hit_points_ = rhs.hit_points_;
+  energy_points_ = rhs.energy_points_;
+  attack_damage_ = rhs.attack_damage_;
   return *this;
 }
 
 // who am I
 void DiamondTrap::whoAmI(void) {
+  if (!hit_points_ || !energy_points_) { 
+    std::cout << "Not enough HP / EP to perform the request task...\n";
+    return;
+  }
   std::cout << "My Diamond name is " << name_ << " and my Clap name is "
-            << getName() << "\n";
+            << ClapTrap::name_ << "\n";
 }

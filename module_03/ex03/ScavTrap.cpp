@@ -8,10 +8,10 @@
 #include "ScavTrap.hpp"
 
 // default constructor
-ScavTrap::ScavTrap(void) {
-  setHitPoints(100);
-  setEnergyPoints(50);
-  setAttackDamage(20);
+ScavTrap::ScavTrap(void)  {
+  hit_points_ = 100;
+  energy_points_ = 50;
+  attack_damage_ = 20;
   std::cout << L_GREEN << "Default constructor (ScavTrap)\n" << RESET;
 }
 
@@ -22,10 +22,10 @@ ScavTrap::~ScavTrap(void) {
 
 // constructor with a given name
 ScavTrap::ScavTrap(const std::string& name) {
-  setName(name);
-  setHitPoints(100);
-  setEnergyPoints(50);
-  setAttackDamage(20);
+  name_ = name;
+  hit_points_ = 100;
+  energy_points_ = 50;
+  attack_damage_ = 20;
   std::cout << L_GREEN << "ScavTrap " << name << " has been constructed\n"
             << RESET;
 }
@@ -39,19 +39,29 @@ ScavTrap::ScavTrap(const ScavTrap& original) {
 
 // = operator overload
 ScavTrap& ScavTrap::operator=(const ScavTrap& rhs) {
-  setName(rhs.getName());
-  setHitPoints(rhs.getHitPoints());
-  setEnergyPoints(rhs.getEnergyPoints());
-  setAttackDamage(rhs.getAttackDamage());
+  name_ = rhs.name_;
+  hit_points_ = rhs.hit_points_;
+  energy_points_ = rhs.energy_points_;
+  attack_damage_ = rhs.attack_damage_;
   return *this;
 }
 
+// guard gate
 void ScavTrap::guardGate(void) {
-  std::cout << "ScavTrap " << getName() << " is now in Gate keeper mode\n";
+  if (!hit_points_ || !energy_points_) { 
+    std::cout << "Not enough HP / EP to perform the request task...\n";
+    return;
+  }
+  std::cout << "ScavTrap " << name_ << " is now in Gate keeper mode\n";
 }
 
+// Scav attack
 void ScavTrap::attack(const std::string& target) {
+  if (!hit_points_ || !energy_points_) { 
+    std::cout << "Not enough HP / EP to perform the request task...\n";
+    return;
+  }
   energy_points_--;
-  std::cout << "ScavTrap " << getName() << " attacks " << target << ", causing "
-            << getAttackDamage() << " points of damage!\n";
+  std::cout << "ScavTrap " << name_ << " attacks " << target << ", causing "
+            << attack_damage_ << " points of damage!\n";
 }

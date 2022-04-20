@@ -15,5 +15,12 @@ int main(void) {
   st.beRepaired(5);
   st.printStatus();
   st.guardGate();
+
+  ScavTrap st2(st);
+  st2.takeDamage(110);
+  st.printStatus();
+  st2.printStatus();
+  st2.guardGate();
+  
   return EXIT_SUCCESS;
 }
