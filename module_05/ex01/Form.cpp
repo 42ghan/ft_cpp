@@ -27,7 +27,7 @@ Form::Form(const std::string& name, const unsigned int sign_grade,
     : name_(name),
       sign_grade_(sign_grade),
       exec_grade_(exec_grade),
-      is_signed_(0) {
+      is_signed_(false) {
   if (sign_grade < 1 || exec_grade < 1) throw GradeTooHighException();
   if (sign_grade > 150 || exec_grade > 150) throw GradeTooLowException();
   std::cout << L_GREEN << "A form (name : " << name
@@ -39,16 +39,16 @@ Form::Form(const std::string& name, const unsigned int sign_grade,
 
 // copy constructor
 Form::Form(const Form& original)
-    : name_(original.getName()),
-      sign_grade_(original.getSignGrade()),
-      exec_grade_(original.getExecGrade()) {
+    : name_(original.name_),
+      sign_grade_(original.sign_grade_),
+      exec_grade_(original.exec_grade_) {
   *this = original;
   std::cout << L_GREEN << "Copy constructor (Form)\n" << RESET;
 }
 
 // = operator overload
 Form& Form::operator=(const Form& rhs) {
-  is_signed_ = rhs.getIsSigned();
+  is_signed_ = rhs.is_signed_;
   return *this;
 }
 
@@ -65,9 +65,8 @@ bool Form::getIsSigned(void) const { return is_signed_; }
 void Form::beSigned(const Bureaucrat& a) {
   if (a.getGrade() <= sign_grade_)
     is_signed_ = true;
-  else 
+  else
     throw GradeTooLowException();
-  
 }
 
 // << operator overload

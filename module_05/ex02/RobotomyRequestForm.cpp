@@ -35,7 +35,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& original)
     : Form(original.getName(), original.getSignGrade(),
            original.getExecGrade()),
-      target_(original.getTarget()) {
+      target_(original.target_) {
   *this = original;
   std::cout << L_GREEN << "Copy constructor (RobotomyRequestForm)\n" << RESET;
 }
@@ -43,7 +43,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& original)
 // = operator overload
 RobotomyRequestForm& RobotomyRequestForm::operator=(
     const RobotomyRequestForm& rhs) {
-  is_signed_ = rhs.getIsSigned();
+  setIsSigned(rhs.getIsSigned());
   return *this;
 }
 

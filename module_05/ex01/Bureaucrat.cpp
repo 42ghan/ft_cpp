@@ -11,7 +11,7 @@
 
 // default constructor
 Bureaucrat::Bureaucrat(void) : grade_(0) {
-  if (grade_ < 1) throw GradeTooHighException();
+  throw GradeTooHighException();
   std::cout << L_GREEN << "Default constructor (Bureaucrat)\n" << RESET;
 }
 
@@ -23,8 +23,10 @@ Bureaucrat::~Bureaucrat(void) {
 // constructor with a given name and grade
 Bureaucrat::Bureaucrat(const std::string& name, const unsigned int& grade)
     : name_(name), grade_(grade) {
-  if (grade < 1) throw GradeTooHighException();
-  if (grade > 150) throw GradeTooLowException();
+  if (grade < 1)
+    throw GradeTooHighException();
+  else if (grade > 150)
+    throw GradeTooLowException();
   std::cout << L_GREEN << name << " with grade, " << grade
             << " has been constructed\n"
             << RESET;
@@ -38,7 +40,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& original) {
 
 // = operator overload
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
-  grade_ = rhs.getGrade();
+  grade_ = rhs.grade_;
   return *this;
 }
 
@@ -49,20 +51,20 @@ unsigned int Bureaucrat::getGrade(void) const { return grade_; }
 
 // increment || decrement
 Bureaucrat& Bureaucrat::operator++(void) {
-  if (getGrade() <= 1) throw GradeTooHighException();
+  if (grade_ <= 1) throw GradeTooHighException();
   grade_--;
   return *this;
 }
 
 Bureaucrat& Bureaucrat::operator--(void) {
-  if (getGrade() >= 150) throw GradeTooLowException();
+  if (grade_ >= 150) throw GradeTooLowException();
   grade_++;
   return *this;
 }
 
 // sign form
 void Bureaucrat::signForm(Form& form) const {
-  if (form.getSignGrade() >= grade_) 
+  if (form.getSignGrade() >= grade_)
     std::cout << name_ << " signed " << form.getName() << '\n';
   else
     std::cout << name_ << " couldn't sign " << form.getName()

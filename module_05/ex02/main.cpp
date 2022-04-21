@@ -42,5 +42,14 @@ int main(void) {
     std::cout << e.what();
   }
 
+  try {
+    Bureaucrat daniel("daniel", 1);
+    RobotomyRequestForm r_form("brian");
+
+    daniel.executeForm(r_form);
+  } catch (std::exception& e) {
+    std::cout << e.what();
+  }
+
   return EXIT_SUCCESS;
 }
