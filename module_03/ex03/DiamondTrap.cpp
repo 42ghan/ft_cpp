@@ -8,7 +8,7 @@
 #include "DiamondTrap.hpp"
 
 // default constructor
-DiamondTrap::DiamondTrap(void) {
+DiamondTrap::DiamondTrap(void) : ClapTrap("_clap_name") {
   hit_points_ = 100;
   energy_points_ = 50;
   attack_damage_ = 30;
@@ -21,8 +21,8 @@ DiamondTrap::~DiamondTrap(void) {
 }
 
 // constructor with a given name
-DiamondTrap::DiamondTrap(const std::string& name) {
-  ClapTrap::name_ = name + "_clap_name";
+DiamondTrap::DiamondTrap(const std::string& name)
+    : ClapTrap(name + "_clap_name") {
   name_ = name;
   hit_points_ = 100;
   energy_points_ = 50;
