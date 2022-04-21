@@ -16,6 +16,11 @@
 class Form;
 
 class Intern {
+ private:
+  Form* allocShrubberyCreation(const std::string& target);
+  Form* allocRobotomyRequest(const std::string& target);
+  Form* allocPresidentialPardon(const std::string& target);
+
  public:
   Intern(void);
   ~Intern(void);
@@ -23,9 +28,6 @@ class Intern {
 
   Intern& operator=(const Intern&);
 
-  Form* allocShrubberyCreation(const std::string& target);
-  Form* allocRobotomyRequest(const std::string& target);
-  Form* allocPresidentialPardon(const std::string& target);
   Form* makeForm(const std::string& form_name, const std::string& target);
 };
 

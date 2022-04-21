@@ -4,7 +4,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-int main(void) {
+void test(void) {
   try {
     Intern someRandomIntern;
     Form* rrf;
@@ -22,9 +22,15 @@ int main(void) {
     brian.signForm(*rrf);
     brian.executeForm(*rrf);
     delete rrf;
+    rrf = someRandomIntern.makeForm("wrong", "home");
   } catch (std::exception& e) {
     std::cout << e.what();
   }
+}
+
+int main(void) {
+  test();
+  system("leaks coffee_making");
 
   return EXIT_SUCCESS;
 }

@@ -16,7 +16,7 @@
 class Bureaucrat;
 
 class Form {
- protected:
+ private:
   const std::string name_;
   const unsigned int sign_grade_;
   const unsigned int exec_grade_;
@@ -24,13 +24,13 @@ class Form {
 
   class GradeTooHighException : public std::exception {
     virtual const char* what(void) const throw() {
-      return "This bureaucrat's grade is too high!\n";
+      return "Grade is too high!\n";
     }
   };
 
   class GradeTooLowException : public std::exception {
     virtual const char* what(void) const throw() {
-      return "This bureaucrat's grade is too low!\n";
+      return "Grade is too low!\n";
     }
   };
 
@@ -40,11 +40,13 @@ class Form {
     }
   };
 
+ protected:
   bool checkGrade(const unsigned int) const;
+  void setIsSigned(const bool);
 
  public:
   Form(void);
-  virtual ~Form(void) = 0;
+  virtual ~Form(void);
   Form(const std::string&, const unsigned int, const unsigned int);
   Form(const Form&);
 

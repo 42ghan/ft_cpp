@@ -36,7 +36,7 @@ PresidentialPardonForm::PresidentialPardonForm(
     const PresidentialPardonForm& original)
     : Form(original.getName(), original.getSignGrade(),
            original.getExecGrade()),
-      target_(original.getTarget()) {
+      target_(original.target_) {
   *this = original;
   std::cout << L_GREEN << "Copy constructor (PresidentialPardonForm)\n"
             << RESET;
@@ -45,7 +45,7 @@ PresidentialPardonForm::PresidentialPardonForm(
 // = operator overload
 PresidentialPardonForm& PresidentialPardonForm::operator=(
     const PresidentialPardonForm& rhs) {
-  is_signed_ = rhs.getIsSigned();
+  setIsSigned(rhs.getIsSigned());
   return *this;
 }
 

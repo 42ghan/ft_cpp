@@ -36,7 +36,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(
     const ShrubberyCreationForm& original)
     : Form(original.getName(), original.getSignGrade(),
            original.getExecGrade()),
-      target_(original.getTarget()) {
+      target_(original.target_) {
   *this = original;
   std::cout << L_GREEN << "Copy constructor (ShrubberyCreationForm)\n" << RESET;
 }
@@ -44,7 +44,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(
 // = operator overload
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(
     const ShrubberyCreationForm& rhs) {
-  is_signed_ = rhs.getIsSigned();
+  setIsSigned(rhs.getIsSigned());
   return *this;
 }
 
