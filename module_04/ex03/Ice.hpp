@@ -14,7 +14,7 @@
 class Ice : public AMateria {
  public:
   Ice(void);
-  ~Ice(void);
+  virtual ~Ice(void);
   Ice(const Ice&);
 
   Ice& operator=(const Ice&);
