@@ -5,6 +5,8 @@ int main(void) {
     Bureaucrat bob("bob", 1);
     Bureaucrat james("james", 3);
 
+    std::cout << bob.getName() << "'s grade is " << bob.getGrade() << '\n';
+
     std::cout << james;
     ++james;
     std::cout << james;
