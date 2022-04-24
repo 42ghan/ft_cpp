@@ -8,7 +8,6 @@
 #ifndef TYPECONVERTER_HPP
 #define TYPECONVERTER_HPP
 
-#include <exception>
 #include <iostream>
 #include <limits>
 #include <sstream>
@@ -44,13 +43,6 @@ class TypeConverter {
   TypeConverter(const TypeConverter&);
 
   TypeConverter& operator=(const TypeConverter&);
-
-  std::string getParam(void) const;
-  int getType(void) const;
-  char getInChar(void) const;
-  int getInInt(void) const;
-  float getInFloat(void) const;
-  double getInDouble(void) const;
 
   void convert(void);
 };

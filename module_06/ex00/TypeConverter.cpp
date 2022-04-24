@@ -24,27 +24,14 @@ TypeConverter::TypeConverter(const TypeConverter& original) {
 
 // = operator overload
 TypeConverter& TypeConverter::operator=(const TypeConverter& rhs) {
-  param_ = rhs.getParam();
-  type_ = rhs.getType();
-  in_char_ = rhs.getInChar();
-  in_int_ = rhs.getInInt();
-  in_float_ = rhs.getInFloat();
-  in_double_ = rhs.getInDouble();
+  param_ = rhs.param_;
+  type_ = rhs.type_;
+  in_char_ = rhs.in_char_;
+  in_int_ = rhs.in_int_;
+  in_float_ = rhs.in_float_;
+  in_double_ = rhs.in_double_;
   return *this;
 }
-
-// getters
-std::string TypeConverter::getParam(void) const { return param_; }
-
-int TypeConverter::getType(void) const { return type_; }
-
-char TypeConverter::getInChar(void) const { return in_char_; }
-
-int TypeConverter::getInInt(void) const { return in_int_; }
-
-float TypeConverter::getInFloat(void) const { return in_float_; }
-
-double TypeConverter::getInDouble(void) const { return in_double_; }
 
 // PRIVATE : count occurence of a pattern in param
 size_t TypeConverter::countOccurrence_(const std::string& pattern) {
@@ -235,6 +222,5 @@ void TypeConverter::convert(void) {
       break;
     default:
       std::cout << "* Error : no matching type *\n";
-      return;
   }
 }
