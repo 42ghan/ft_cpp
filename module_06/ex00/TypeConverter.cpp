@@ -59,6 +59,13 @@ int TypeConverter::detectType_(void) {
   if (!cnt_dot) {
     for (; idx < len_; idx++)
       if (param_.at(idx) < '0' || param_.at(idx) > '9') return kNa;
+    std::stringstream ss;
+    int tmp;
+    ss.str(param_);
+    ss >> tmp;
+    if (tmp > std::numeric_limits<int>::max() ||
+        tmp < std::numeric_limits<int>::min())
+      return kDouble;
     return kInt;
   } else if (cnt_dot == 1) {
     bool is_dot = false;
