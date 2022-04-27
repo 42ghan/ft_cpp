@@ -15,7 +15,7 @@ template <class T>
 class Array {
  private:
   T* array_;
-  int size_;
+  unsigned int size_;
 
   class IndexOutOfBound : public std::exception {
     virtual const char* what(void) const throw() {
@@ -31,9 +31,9 @@ class Array {
 
   Array& operator=(const Array&);
 
-  T& operator[](const int);
+  T& operator[](const unsigned int);
 
-  int size(void) const;
+  unsigned int size(void) const;
   T* getArray(void) const;
 };
 
@@ -64,21 +64,21 @@ Array<T>& Array<T>::operator=(const Array<T>& rhs) {
 
   delete[] array_;
   array_ = new T[rhs.size()];
-  for (int i = 0; i < rhs.size(); i++) array_[i] = rhs_array[i];
+  for (unsigned int i = 0; i < rhs.size(); i++) array_[i] = rhs_array[i];
   size_ = rhs.size();
   return *this;
 }
 
 // [] operator overload
 template <class T>
-T& Array<T>::operator[](const int idx) {
-  if (idx < 0 || idx + 1 > size_) throw IndexOutOfBound();
+T& Array<T>::operator[](const unsigned int idx) {
+  if (idx + 1 > size_) throw IndexOutOfBound();
   return *(array_ + idx);
 }
 
 // get size of the array
 template <class T>
-int Array<T>::size(void) const {
+unsigned int Array<T>::size(void) const {
   return size_;
 }
 
