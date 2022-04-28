@@ -33,6 +33,7 @@ class Array {
   Array& operator=(const Array&);
 
   T& operator[](const long);
+  T operator[](const long) const;
 
   unsigned int size(void) const;
   T* getArray(void) const;
@@ -73,6 +74,14 @@ Array<T>& Array<T>::operator=(const Array<T>& rhs) {
 // [] operator overload
 template <class T>
 T& Array<T>::operator[](const long idx) {
+  if (idx < 0 || idx >= (long)std::numeric_limits<unsigned int>::max() ||
+      (unsigned int)(idx + 1) > size_)
+    throw IndexOutOfBound();
+  return *(array_ + idx);
+}
+
+template <class T>
+T Array<T>::operator[](const long idx) const {
   if (idx < 0 || idx >= (long)std::numeric_limits<unsigned int>::max() ||
       (unsigned int)(idx + 1) > size_)
     throw IndexOutOfBound();
