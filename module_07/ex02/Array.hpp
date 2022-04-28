@@ -10,6 +10,7 @@
 
 #include <cstdlib>
 #include <exception>
+#include <limits>
 
 template <class T>
 class Array {
@@ -31,7 +32,7 @@ class Array {
 
   Array& operator=(const Array&);
 
-  T& operator[](const unsigned int);
+  T& operator[](const long);
 
   unsigned int size(void) const;
   T* getArray(void) const;
@@ -71,8 +72,10 @@ Array<T>& Array<T>::operator=(const Array<T>& rhs) {
 
 // [] operator overload
 template <class T>
-T& Array<T>::operator[](const unsigned int idx) {
-  if (idx + 1 > size_) throw IndexOutOfBound();
+T& Array<T>::operator[](const long idx) {
+  if (idx < 0 || idx >= (long)std::numeric_limits<unsigned int>::max() ||
+      (unsigned int)(idx + 1) > size_)
+    throw IndexOutOfBound();
   return *(array_ + idx);
 }
 
