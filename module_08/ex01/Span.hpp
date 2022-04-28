@@ -39,11 +39,10 @@ class Span {
 
   std::vector<int> getNumsVector(void) const;
   unsigned int getMaxLength(void) const;
-  unsigned int getLength(void) const;
 
   void addNumber(const int);
-  int shortestSpan(void) const;
-  int longestSpan(void) const;
+  unsigned int shortestSpan(void) const;
+  unsigned int longestSpan(void) const;
 
   void fillNumbers(void);
 };

@@ -26,6 +26,14 @@ int main(void) {
 
     std::cout << test_long.shortestSpan() << std::endl;
     std::cout << test_long.longestSpan() << std::endl;
+    std::sort(test_long.getNumsVector().begin(),
+              test_long.getNumsVector().end());
+    std::vector<int>::iterator found = std::adjacent_find(
+        test_long.getNumsVector().begin(), test_long.getNumsVector().end());
+    if (found != test_long.getNumsVector().end())
+      std::cout << "There are equal values\n";
+    else
+      std::cout << "No equal values\n";
   } catch (const std::exception& e) {
     std::cout << e.what();
   }

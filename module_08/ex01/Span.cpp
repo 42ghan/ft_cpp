@@ -25,8 +25,8 @@ Span::Span(const Span& original) { *this = original; }
 
 // = operator overload
 Span& Span::operator=(const Span& rhs) {
-  nums_vec_ = rhs.getNumsVector();
-  max_len_ = rhs.getMaxLength();
+  nums_vec_ = rhs.nums_vec_;
+  max_len_ = rhs.max_len_;
   return *this;
 }
 
@@ -42,7 +42,7 @@ void Span::addNumber(const int new_num) {
 }
 
 // get shortest or longest span
-int Span::shortestSpan(void) const {
+unsigned int Span::shortestSpan(void) const {
   if (nums_vec_.empty() || nums_vec_.size() == 1) throw NoSpanException();
   std::vector<int> tmp = nums_vec_;
   std::sort(tmp.begin(), tmp.end());
@@ -56,7 +56,7 @@ int Span::shortestSpan(void) const {
   return diff;
 }
 
-int Span::longestSpan(void) const {
+unsigned int Span::longestSpan(void) const {
   if (nums_vec_.empty() || nums_vec_.size() == 1) throw NoSpanException();
   std::vector<int>::const_iterator begin = nums_vec_.begin();
   std::vector<int>::const_iterator end = nums_vec_.end();
