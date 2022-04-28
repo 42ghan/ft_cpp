@@ -17,6 +17,7 @@ template <typename T>
 class MutantStack : public std::stack<T> {
  public:
   typedef typename std::stack<T>::container_type::iterator iterator;
+  typedef typename std::stack<T>::container_type::const_iterator const_iterator;
   MutantStack(void);
   ~MutantStack(void);
   MutantStack(const MutantStack&);
@@ -28,10 +29,10 @@ class MutantStack : public std::stack<T> {
   iterator rbegin(void);
   iterator rend(void);
 
-  const iterator begin(void) const;
-  const iterator end(void) const;
-  const iterator rbegin(void) const;
-  const iterator rend(void) const;
+  const_iterator begin(void) const;
+  const_iterator end(void) const;
+  const_iterator rbegin(void) const;
+  const_iterator rend(void) const;
 };
 
 // default constructor
@@ -77,22 +78,22 @@ typename MutantStack<T>::iterator MutantStack<T>::rend(void) {
 }
 
 template <typename T>
-const typename MutantStack<T>::iterator MutantStack<T>::begin(void) const {
+typename MutantStack<T>::const_iterator MutantStack<T>::begin(void) const {
   return std::stack<T>::c.begin();
 }
 
 template <typename T>
-const typename MutantStack<T>::iterator MutantStack<T>::end(void) const {
+typename MutantStack<T>::const_iterator MutantStack<T>::end(void) const {
   return std::stack<T>::c.end();
 }
 
 template <typename T>
-const typename MutantStack<T>::iterator MutantStack<T>::rbegin(void) const {
+typename MutantStack<T>::const_iterator MutantStack<T>::rbegin(void) const {
   return std::stack<T>::c.rbegin();
 }
 
 template <typename T>
-const typename MutantStack<T>::iterator MutantStack<T>::rend(void) const {
+typename MutantStack<T>::const_iterator MutantStack<T>::rend(void) const {
   return std::stack<T>::c.rend();
 }
 
