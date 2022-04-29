@@ -46,8 +46,8 @@ unsigned int Span::shortestSpan(void) const {
   if (nums_vec_.empty() || nums_vec_.size() == 1) throw NoSpanException();
   std::vector<int> tmp = nums_vec_;
   std::sort(tmp.begin(), tmp.end());
-  int diff = std::numeric_limits<int>::max();
-  int new_diff;
+  unsigned int diff = std::numeric_limits<unsigned int>::max();
+  unsigned int new_diff;
   for (std::vector<int>::const_iterator itr = tmp.begin(); itr != tmp.end();
        ++itr) {
     if (itr != tmp.end() - 1) new_diff = *(itr + 1) - *(itr);

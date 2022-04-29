@@ -6,15 +6,15 @@
  */
 
 #include <algorithm>
+#include <deque>
 #include <iostream>
 #include <list>
-#include <queue>
 #include <vector>
 
 #include "easyfind.hpp"
 
 int main(void) {
-  {
+  try {
     std::cout << "====== VECTOR ======\n";
     std::vector<int> vec;
 
@@ -32,12 +32,14 @@ int main(void) {
     std::cout << " ]\n";
 
     std::vector<int>::iterator itr = easyfind<std::vector<int> >(vec, 3);
-    checkFound<std::vector<int> >(itr, vec.end(), 3);
+    std::cout << *itr << " is in the container\n";
     itr = easyfind<std::vector<int> >(vec, 8);
-    checkFound<std::vector<int> >(itr, vec.end(), 8);
+    std::cout << *itr << " is in the container\n";
+  } catch (const std::exception& e) {
+    std::cout << e.what();
   }
 
-  {
+  try {
     std::cout << "====== LIST ======\n";
     std::list<int> lst;
 
@@ -54,13 +56,15 @@ int main(void) {
     }
     std::cout << " ]\n";
 
-    std::list<int>::iterator itr_lst = easyfind<std::list<int> >(lst, 3);
-    checkFound<std::list<int> >(itr_lst, lst.end(), 3);
-    itr_lst = easyfind<std::list<int> >(lst, 8);
-    checkFound<std::list<int> >(itr_lst, lst.end(), 8);
+    std::list<int>::iterator itr = easyfind<std::list<int> >(lst, 3);
+    std::cout << *itr << " is in the container\n";
+    itr = easyfind<std::list<int> >(lst, 8);
+    std::cout << *itr << " is in the container\n";
+  } catch (const std::exception& e) {
+    std::cout << e.what();
   }
 
-  {
+  try {
     std::cout << "====== DEQUE ======\n";
     std::deque<int> deque;
 
@@ -78,10 +82,12 @@ int main(void) {
     }
     std::cout << " ]\n";
 
-    std::deque<int>::iterator itr_lst = easyfind<std::deque<int> >(deque, 3);
-    checkFound<std::deque<int> >(itr_lst, deque.end(), 3);
-    itr_lst = easyfind<std::deque<int> >(deque, 8);
-    checkFound<std::deque<int> >(itr_lst, deque.end(), 8);
+    std::deque<int>::iterator itr = easyfind<std::deque<int> >(deque, 3);
+    std::cout << *itr << " is in the container\n";
+    itr = easyfind<std::deque<int> >(deque, 8);
+    std::cout << *itr << " is in the container\n";
+  } catch (const std::exception& e) {
+    std::cout << e.what();
   }
 
   return EXIT_SUCCESS;

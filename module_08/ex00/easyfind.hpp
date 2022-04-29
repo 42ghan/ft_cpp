@@ -11,19 +11,15 @@
 
 #include <algorithm>
 
-template <typename T>
-void checkFound(typename T::iterator itr, typename T::iterator end, int value) {
-  if (itr != end)
-    std::cout << "Found " << *itr << "!\n";
-  else
-    std::cout << "Cannot find " << value << " ...\n";
-}
+class NoOccurrenceException : public std::exception {
+  const char* what(void) const throw() { return "No occurrence is found\n"; }
+};
 
 template <typename T>
 typename T::iterator easyfind(T& container, int value) {
-  typename T::iterator itr = container.begin();
-  for (; itr != container.end(); ++itr)
-    if (*itr == value) break;
+  typename T::iterator itr =
+      std::find(container.begin(), container.end(), value);
+  if (itr == container.end()) throw NoOccurrenceException();
   return itr;
 }
 
